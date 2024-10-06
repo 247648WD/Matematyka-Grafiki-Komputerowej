@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string> 
+#include <cmath>
 
 using namespace std;
 
@@ -48,6 +49,7 @@ public:
 		}
 		else {
 			cout << "Dzielnik nie mo¿e byæ równy 0!" << endl;
+			return Wektory(this->x, this->y, this->z);
 		}
 	}
 
@@ -73,7 +75,15 @@ public:
 		}
 		else {
 			cout << "Dzielnik nie mo¿e byæ równy 0!" << endl;
+			return Wektory(this->x, this->y, this->z);
 		}
+	}
+
+	double length() {
+		double d;
+		d = pow((this->x * this->x) + (this->y * this->y) + (this->z * this->z), 0.5);
+		cout << d;
+		return d;
 	}
 
 };
@@ -89,10 +99,11 @@ int main() {
 	v3.print();
 	v3 = v3 * 5;
 	v3.print();
-	v3 /= a;
+	v3 = v3 /= a;
 	v3.print();
-	v3 /= b;
+	v3 = v3 /= b;
 	v3.print();
+	v3.length();
 		//delete &v1, &v2, &v3;
 	return 0;
 }
