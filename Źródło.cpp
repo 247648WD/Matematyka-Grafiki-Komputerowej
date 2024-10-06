@@ -9,15 +9,37 @@ private:
 	double x;
 	double y;
 	double z;
+
+	void set_x(double x) {
+		this->x = x;
+	}
+	void set_y(double y) {
+		this->y = y;
+	}
+	void set_z(double z) {
+		this->z = z;
+	}
 public:
 	Wektory() {};
 	Wektory(double x, double y, double z) {
 		this->x = x;	
 		this->y = y;
 		this->z = z;
+
+		
 	}
 	
 	~Wektory() {};
+
+	double get_x() {
+		return this->x;
+	}
+	double get_y() {
+		return this->y;
+	}
+	double get_z() {
+		return this->z;
+	}
 
 	void print() {
 		string str1 = to_string(this->x);
@@ -82,10 +104,18 @@ public:
 	double length() {
 		double d;
 		d = pow((this->x * this->x) + (this->y * this->y) + (this->z * this->z), 0.5);
-		cout << d;
+		//cout << d << endl;
 		return d;
 	}
 
+	Wektory normalizacja() {
+		Wektory v = Wektory();
+		double d = this->length();
+		v.set_x(this->get_x() / d);
+		v.set_y(this->get_y() / d);
+		v.set_z(this->get_z() / d);
+		return v;
+	}
 };
 
 int main() {
@@ -103,7 +133,9 @@ int main() {
 	v3.print();
 	v3 = v3 /= b;
 	v3.print();
-	v3.length();
+	cout << v3.length() << endl;
+	v3 = v3.normalizacja();
+	cout << v3.length() << endl;
 		//delete &v1, &v2, &v3;
 	return 0;
 }
