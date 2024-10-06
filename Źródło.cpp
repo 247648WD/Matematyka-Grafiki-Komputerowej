@@ -116,6 +116,20 @@ public:
 		v.set_z(this->get_z() / d);
 		return v;
 	}
+
+	double iloczyn_skalarny(Wektory b) {
+		double n;
+		n = this->x * b.x + this->y * b.y + this->z * b.z;
+		cout << n << endl;
+		return n;
+	}
+
+	Wektory iloczyn_wektorowy(Wektory a) {
+		return Wektory(this->y * a.z - this->z * a.y,
+					   this->z * a.x - this->x * a.z,
+					   this->x * a.y - this->y * a.x);
+	}
+
 };
 
 int main() {
@@ -136,6 +150,9 @@ int main() {
 	cout << v3.length() << endl;
 	v3 = v3.normalizacja();
 	cout << v3.length() << endl;
+	v1.iloczyn_skalarny(v2);
+	v1 = v1.iloczyn_wektorowy(v2);
+	v1.print();
 		//delete &v1, &v2, &v3;
 	return 0;
 }
