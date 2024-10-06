@@ -130,6 +130,12 @@ public:
 					   this->x * a.y - this->y * a.x);
 	}
 
+	double katy(Wektory v) {
+		double sum = this->iloczyn_skalarny(v);
+		double katy = acos(sum / (this->length() * v.length()));
+		return katy;
+	}
+
 };
 
 int main() {
@@ -137,7 +143,7 @@ int main() {
 	Wektory v2 = Wektory(2, 3, 4);
 	Wektory v3 = Wektory();
 
-	double a = 2;
+	/*double a = 2;
 	double b = 0;
 	v3 = v1 - v2;
 	v3.print();
@@ -152,7 +158,8 @@ int main() {
 	cout << v3.length() << endl;
 	v1.iloczyn_skalarny(v2);
 	v1 = v1.iloczyn_wektorowy(v2);
-	v1.print();
+	v1.print();*/
+	cout << v1.katy(v2);
 		//delete &v1, &v2, &v3;
 	return 0;
 }
