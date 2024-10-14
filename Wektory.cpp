@@ -42,70 +42,98 @@ void Wektory::set_z(double z) {
 }
 
 void Wektory::print() {
-    cout << this->x << ", " << this->y << ", " << this->z << endl;
+    cout << this->x << ", " 
+         << this->y << ", " 
+         << this->z << endl;
 }
 
 Wektory Wektory::operator +(const Wektory& v1) {
-    return Wektory(this->x + v1.x, this->y + v1.y, this->z + v1.z);
+    return Wektory(this->x + v1.x, 
+                   this->y + v1.y, 
+                   this->z + v1.z);
 }
 
 Wektory Wektory::operator -(const Wektory& v1) {
-    return Wektory(this->x - v1.x, this->y - v1.y, this->z - v1.z);
+    return Wektory(this->x - v1.x, 
+                   this->y - v1.y, 
+                   this->z - v1.z);
 }
 
 Wektory Wektory::operator *(const double s) {
-    return Wektory(this->x * s, this->y * s, this->z * s);
+    return Wektory(this->x * s, 
+                   this->y * s, 
+                   this->z * s);
 }
 
 Wektory Wektory::operator /(const double s) {
     if (s != 0) {
-        return Wektory(this->x / s, this->y / s, this->z / s);
+        return Wektory(this->x / s,
+                       this->y / s, 
+                       this->z / s);
     }
     else {
         cout << "Dzielnik nie moze byc rowny 0!" << endl;
-        return Wektory(this->x, this->y, this->z);
+        return Wektory(this->x, 
+                       this->y, 
+                       this->z);
     }
 }
 
 Wektory Wektory::operator +=(const Wektory& v1) {
-    return Wektory(this->x + v1.x, this->y + v1.y, this->z + v1.z);
+    return Wektory(this->x + v1.x, 
+                   this->y + v1.y, 
+                   this->z + v1.z);
 }
 
 Wektory Wektory::operator -=(const Wektory& v1) {
-    return Wektory(this->x - v1.x, this->y - v1.y, this->z - v1.z);
+    return Wektory(this->x - v1.x, 
+                   this->y - v1.y, 
+                   this->z - v1.z);
 }
 
 Wektory Wektory::operator *=(const double s) {
-    return Wektory(this->x * s, this->y * s, this->z * s);
+    return Wektory(this->x * s,
+                   this->y * s, 
+                   this->z * s);
 }
 
 Wektory Wektory::operator /=(const double s) {
     if (s != 0) {
-        return Wektory(this->x / s, this->y / s, this->z / s);
+        return Wektory(this->x / s, 
+                       this->y / s, 
+                       this->z / s);
     }
     else {
         cout << "Dzielnik nie moze byc rowny 0!" << endl;
-        return Wektory(this->x, this->y, this->z);
+        return Wektory(this->x, 
+                       this->y, 
+                       this->z);
     }
 }
 
 double Wektory::length() {
-    return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+    return sqrt(this->x * this->x + 
+                this->y * this->y + 
+                this->z * this->z);
 }
 
 Wektory Wektory::normalizacja() {
     double d = this->length();
-    return Wektory(this->x / d, this->y / d, this->z / d);
+    return Wektory(this->x / d, 
+                   this->y / d, 
+                   this->z / d);
 }
 
 double Wektory::iloczyn_skalarny(Wektory b) {
-    return this->x * b.x + this->y * b.y + this->z * b.z;
+    return this->x * b.x + 
+           this->y * b.y + 
+           this->z * b.z;
 }
 
 Wektory Wektory::iloczyn_wektorowy(Wektory a) {
     return Wektory(this->y * a.z - this->z * a.y,
-        this->z * a.x - this->x * a.z,
-        this->x * a.y - this->y * a.x);
+                   this->z * a.x - this->x * a.z,
+                   this->x * a.y - this->y * a.x);
 }
 
 // rodzaj: 0 - radiany, 1 - stopnie

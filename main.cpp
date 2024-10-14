@@ -44,7 +44,9 @@ int main() {
 }
 
 void checkWektory(Wektory v1, Wektory v2) {
-    if (v1.get_x() == v2.get_x() && v1.get_y() == v2.get_y() && v1.get_z() == v2.get_z())
+    if (v1.get_x() == v2.get_x() && 
+        v1.get_y() == v2.get_y() && 
+        v1.get_z() == v2.get_z())
         cout << "Wektory sa takie same" << endl;
     else
         cout << "Wektory sa rozne" << endl;
