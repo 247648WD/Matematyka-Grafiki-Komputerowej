@@ -25,8 +25,6 @@ public:
 		this->x = x;	
 		this->y = y;
 		this->z = z;
-
-		
 	}
 	
 	~Wektory() {};
@@ -104,7 +102,6 @@ public:
 	double length() {
 		double d;
 		d = pow((this->x * this->x) + (this->y * this->y) + (this->z * this->z), 0.5);
-		//cout << d << endl;
 		return d;
 	}
 
@@ -120,7 +117,6 @@ public:
 	double iloczyn_skalarny(Wektory b) {
 		double n;
 		n = this->x * b.x + this->y * b.y + this->z * b.z;
-		cout << n << endl;
 		return n;
 	}
 
@@ -139,9 +135,16 @@ public:
 };
 
 int main() {
-	Wektory v1 = Wektory(1, 2, 3);
-	Wektory v2 = Wektory(2, 3, 4);
-	Wektory v3 = Wektory();
+	Wektory v1 = Wektory(0, 3, 0);
+	Wektory v2 = Wektory(5, 5, 0);
+	Wektory a_b = Wektory();
+	Wektory b_a = Wektory();
+
+	Wektory v3 = Wektory(4, 5, 1);
+	Wektory v4 = Wektory(4, 1, 3);
+	Wektory v5 = Wektory();
+
+	//Wektory v3 = Wektory();
 
 	/*double a = 2;
 	double b = 0;
@@ -159,7 +162,29 @@ int main() {
 	v1.iloczyn_skalarny(v2);
 	v1 = v1.iloczyn_wektorowy(v2);
 	v1.print();*/
-	cout << v1.katy(v2);
-		//delete &v1, &v2, &v3;
+
+	//zad.2
+	a_b = v1 + v2;
+	a_b.print();
+
+	b_a = v2 + v2;
+	b_a.print();
+
+	if (a_b.get_x() == b_a.get_x() & a_b.get_y() == b_a.get_y() & a_b.get_z() == b_a.get_z())
+		cout << "Wektory sa takie same" << endl;
+	else
+		cout << "Wektory sa rozne" << endl;
+
+	//zad.3
+	cout << v1.katy(v2) << endl;
+
+	//zad.4
+	v5 = v4.iloczyn_wektorowy(v3);
+	v5.print();
+	
+	//zad.5
+	v5 = v5.normalizacja();
+	v5.print();
+	//delete &v1, &v2;
 	return 0;
 }
