@@ -3,6 +3,8 @@
 #include <cmath>
 #include <string>
 
+#define M_PI 3.14159265358979323846
+
 using namespace std;
 
 Wektory::Wektory() {}
@@ -106,8 +108,14 @@ Wektory Wektory::iloczyn_wektorowy(Wektory a) {
         this->x * a.y - this->y * a.x);
 }
 
-double Wektory::katy(Wektory v) {
+// rodzaj: 0 - radiany, 1 - stopnie
+double Wektory::katy(Wektory v, bool rodzaj) {
     double sum = this->iloczyn_skalarny(v);
     double kat = acos(sum / (this->length() * v.length()));
-    return kat;
+    if (rodzaj == 0)
+        return kat;
+    else {
+        return kat * 180 / M_PI;
+    }
+    
 }

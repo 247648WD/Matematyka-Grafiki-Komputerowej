@@ -27,7 +27,8 @@ int main() {
 
     // zad.3
     cout << endl << "---------- zad.3 ----------" << endl;
-    cout << v1.katy(v2) << endl;
+    cout << "Kat w radianach: " << v1.katy(v2, 0) << endl;
+    cout << "Kat w stopniach: " << v1.katy(v2, 1) << endl;
 
     // zad.4
     cout << endl << "---------- zad.4 ----------" << endl;

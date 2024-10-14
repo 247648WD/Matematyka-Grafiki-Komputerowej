@@ -36,7 +36,7 @@ public:
     Wektory normalizacja();
     double iloczyn_skalarny(Wektory b);
     Wektory iloczyn_wektorowy(Wektory a);
-    double katy(Wektory v);
+    double katy(Wektory v, bool rodzaj);
 };
 
 #endif // !WEKTORY_H
