@@ -114,8 +114,6 @@ double Wektory::katy(Wektory v, bool rodzaj) {
     double kat = acos(sum / (this->length() * v.length()));
     if (rodzaj == 0)
         return kat;
-    else {
+    else
         return kat * 180 / M_PI;
-    }
-    
 }
