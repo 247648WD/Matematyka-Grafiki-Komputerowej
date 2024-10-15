@@ -1,19 +1,18 @@
 #include <iostream>
-#include "Wektory.h"
+#include "Wektory3D.h"
+#include "Wektory2D.h"
 
 using namespace std;
 
-void checkWektory(Wektory v1, Wektory v2);
-
 int main() {
-    Wektory v1 = Wektory(0, 3, 0);
-    Wektory v2 = Wektory(5, 5, 0);
-    Wektory a_b = Wektory();
-    Wektory b_a = Wektory();
+    Wektory3D v1 = Wektory3D(0, 3, 0);
+    Wektory3D v2 = Wektory3D(5, 5, 0);
+    Wektory3D a_b = Wektory3D();
+    Wektory3D b_a = Wektory3D();
 
-    Wektory v3 = Wektory(4, 5, 1);
-    Wektory v4 = Wektory(4, 1, 3);
-    Wektory v5 = Wektory();
+    Wektory3D v3 = Wektory3D(4, 5, 1);
+    Wektory3D v4 = Wektory3D(4, 1, 3);
+    Wektory3D v5 = Wektory3D();
 
     // zad.2
     cout << "---------- zad.2 ----------" << endl;
@@ -23,7 +22,7 @@ int main() {
     b_a = v2 + v1;
     b_a.print();
 
-    checkWektory(a_b, b_a);
+    a_b.check(b_a);
 
     // zad.3
     cout << endl << "---------- zad.3 ----------" << endl;
@@ -38,14 +37,14 @@ int main() {
     // zad.5
     cout << endl << "---------- zad.5 ----------" << endl;
     v5 = v5.normalizacja();
+    cout << v5.length() << endl;
     v5.print();
 
+    Wektory2D a2d = Wektory2D(1, 2);
+    Wektory2D b2d = Wektory2D(4, -1);
+    Wektory3D c3d = Wektory3D();
+    a2d.print();
+    c3d = a2d.iloczyn_wektorowy(b2d);
+    c3d.print();
     return 0;
-}
-
-void checkWektory(Wektory v1, Wektory v2) {
-    if (v1.get_x() == v2.get_x() && v1.get_y() == v2.get_y() && v1.get_z() == v2.get_z())
-        cout << "Wektory sa takie same" << endl;
-    else
-        cout << "Wektory sa rozne" << endl;
 }
