@@ -74,6 +74,8 @@ void Macierz::set_size_y(int size_y) {
 
 void Macierz::print_matrix() {
 	for (int i = 0; i < (size_x * size_y); i++) {
+		if (i != 0 && i % size_x == 0)
+			cout << endl;
 		cout << wyrazy.at(i) << " ";
 	}
 }
@@ -81,7 +83,7 @@ void Macierz::print_matrix() {
 Macierz Macierz::operator +(const Macierz& m1) {
 	
 	if (this->size_x != m1.size_x || this->size_y != m1.size_y) {
-		throw std::invalid_argument("Macierze musz¹ mieæ takie same wymiary do dodawania.");
+		throw std::invalid_argument("Macierze nie maja takich samych wymiarow.");
 	}
 
 	Macierz wynik(this->size_x, this->size_y);
@@ -96,7 +98,7 @@ Macierz Macierz::operator +(const Macierz& m1) {
 Macierz Macierz::operator -(const Macierz& m1) {
 
 	if (this->size_x != m1.size_x || this->size_y != m1.size_y) {
-		throw std::invalid_argument("Macierze musz¹ mieæ takie same wymiary do odejmowania.");
+		throw std::invalid_argument("Macierze nie maja takich samych wymiarow.");
 	}
 
 	Macierz wynik(this->size_x, this->size_y);
