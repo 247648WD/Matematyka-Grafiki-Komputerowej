@@ -19,6 +19,8 @@ public:
 	Macierz(int size_x, int size_y, bool is_unit);
 	Macierz(int size_x, int size_y);
 	Macierz(int size_x, int size_y, double numbers[]);
+	Macierz operator +(const Macierz& m1);
+	Macierz operator -(const Macierz& m1);
 	~Macierz();
 
 	double get_number(int pos_x, int pos_y);

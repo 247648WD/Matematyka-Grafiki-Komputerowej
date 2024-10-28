@@ -35,11 +35,11 @@ Macierz::Macierz(int size_x, int size_y, bool is_unit) {
 Macierz::Macierz(int size_x, int size_y) {
 	this->set_size_x(size_x);
 	this->set_size_y(size_y);
-	double temp;
+	/*double temp;
 	for (int i = 0; i < (size_x * size_y); i++) {
 		cin >> temp;
 		wyrazy.push_back(temp);
-	}
+	}*/
 }
 
 void Macierz::set_number(int number) {
@@ -76,4 +76,34 @@ void Macierz::print_matrix() {
 	for (int i = 0; i < (size_x * size_y); i++) {
 		cout << wyrazy.at(i) << " ";
 	}
+}
+
+Macierz Macierz::operator +(const Macierz& m1) {
+	
+	if (this->size_x != m1.size_x || this->size_y != m1.size_y) {
+		throw std::invalid_argument("Macierze musz¹ mieæ takie same wymiary do dodawania.");
+	}
+
+	Macierz wynik(this->size_x, this->size_y);
+
+	for (int i = 0; i < (size_x * size_y); i++) {
+		wynik.wyrazy.push_back(this->wyrazy[i] + m1.wyrazy[i]);
+	}
+
+	return wynik;
+}
+
+Macierz Macierz::operator -(const Macierz& m1) {
+
+	if (this->size_x != m1.size_x || this->size_y != m1.size_y) {
+		throw std::invalid_argument("Macierze musz¹ mieæ takie same wymiary do dodawania.");
+	}
+
+	Macierz wynik(this->size_x, this->size_y);
+
+	for (int i = 0; i < (size_x * size_y); i++) {
+		wynik.wyrazy.push_back(this->wyrazy[i] - m1.wyrazy[i]);
+	}
+
+	return wynik;
 }
