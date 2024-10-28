@@ -154,13 +154,6 @@ double Macierz::get_det() {
 		}
 		wynik += temp;
 	}
-	for (int i = this->size_x - 2; i >= 0; i--) {
-		double temp = 1;
-		for (int j = this->size_x - 1; j >= 0; j--) {
-			temp *= this->get_number(j + i, j + i);
-		}
-		wynik -= temp;
-	}
 	return wynik;
 }
 

@@ -41,9 +41,10 @@ int main() {
     cout << v5.length() << endl;
     v5.print();*/
     double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+    double pls1[] = { 1,2,3,4,5,6,7,8,9};
     Macierz m1 = Macierz(2, 2, true);
     Macierz m2 = Macierz(4,3,pls);
-    //Macierz m3 = Macierz(3, 3, pls);
+    Macierz m3 = Macierz(3, 3, pls1);
     Macierz m4 = Macierz();
 
     m1.print_matrix();
@@ -65,6 +66,7 @@ int main() {
     m4 = m2.transposition();
     cout << endl << endl;
     m4.print_matrix();
+    cout << endl << m3.get_det();
 
     return 0;
 }
