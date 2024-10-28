@@ -22,6 +22,7 @@ public:
 	~Macierz();
 
 	double get_number(int pos_x, int pos_y);
+	void set_gut_number(int pos_x, int pos_y, int number);
 	int get_size_x();
 	int get_size_y();
 

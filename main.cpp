@@ -40,13 +40,18 @@ int main() {
     v5 = v5.normalizacja();
     cout << v5.length() << endl;
     v5.print();*/
-
+    double pls[] = {1,2,3,4,5,6,7,8,9};
     Macierz m1 = Macierz(2, 2, true);
-    Macierz m2 = Macierz(3,2);
+    Macierz m2 = Macierz(3,3,pls);
 
     m1.print_matrix();
     cout << endl;
     m2.print_matrix();
+    cout << endl;
+    cout << m2.get_number(0, 2);
+    cout << endl;
+    m2.set_gut_number(0, 2, 15);
+    cout << m2.get_number(0, 0);
 
     return 0;
 }
