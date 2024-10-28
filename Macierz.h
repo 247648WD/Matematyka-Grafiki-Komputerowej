@@ -29,6 +29,7 @@ public:
 	void set_gut_number(int pos_x, int pos_y, int number);
 	int get_size_x();
 	int get_size_y();
+	double get_det();
 
 	void print_matrix();
 };

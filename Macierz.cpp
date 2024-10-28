@@ -141,3 +141,16 @@ Macierz Macierz::matrix_multi (Macierz& m1) {
 
 	return wynik;
 }
+
+double Macierz::get_det() {
+	if (this->size_x != this->size_y) {
+		throw std::invalid_argument("Macierz musi byæ kwadratowa.");
+	}
+
+	for (int i = 0; i < this->size_x - 1; i++) {
+		for (int j = 0; j < this->size_x; j++) {
+
+		}
+	}
+	return 1;
+}
