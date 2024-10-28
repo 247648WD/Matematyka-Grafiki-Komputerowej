@@ -47,11 +47,11 @@ void Macierz::set_number(int number) {
 }
 
 double Macierz::get_number(int pos_x, int pos_y) {
-	return wyrazy.at(int(pos_x * get_size_x() + pos_y - (pos_x * (((pos_x + 1) / 2) - 1))));
+	return wyrazy.at(pos_x * get_size_y() + pos_y);
 }
 
 void Macierz::set_gut_number(int pos_x, int pos_y, double number) {
-	wyrazy.at(get_number(pos_x, pos_y) - 1) = number;
+	wyrazy.at(pos_x * get_size_y() + pos_y) = number;
 }
 
 Macierz::~Macierz() {}
@@ -165,16 +165,48 @@ double Macierz::get_det() {
 }
 
 
-Macierz Macierz::transposition() {
-	Macierz m1(this->size_y, this->size_x);
+//Macierz Macierz::transposition() {
+//	Macierz wynik(this->size_y, this->size_x);
+//	for (int i = 0; i < (size_x * size_y); i++) {
+//		wynik.wyrazy.push_back(0);
+//	}
+//	
+//	double temp;
+//
+//	cout << endl << endl;
+//	wynik.print_matrix();
+//	cout << endl << endl;
+//
+//	for (int i = 0; i < size_x; i++) {
+//		for (int j = 0; j < size_y; j++) {
+//			temp = this->get_number(i, j);
+//			cout << "a: " << this->get_number(i, j) << endl;
+//			wynik.set_gut_number(j, i, temp);
+//			cout << "b: " << wynik.get_number(j, i) << endl;
+//		}
+//	}
+//
+//	wynik.print_matrix();
+//
+//	return wynik;
+//}
 
-	for (int i = 0; i < size_y; i++) {
-		for (int j = 0; j < size_x; j++) {
-			cout << m1.get_number(j, i);
-			m1.set_gut_number(i, j, this->get_number(j, i));
+Macierz Macierz::transposition() {
+	Macierz wynik(this->size_y, this->size_x);
+	for (int i = 0; i < (size_x * size_y); i++) {
+			wynik.wyrazy.push_back(0);
+	}
+
+	for (int i = 0; i < size_x; i++) {
+		for (int j = 0; j < size_y; j++) {
+			wynik.wyrazy.at(j * size_x + i) = this->get_number(i, j);
 		}
 	}
 
-	return m1;
+	this->wyrazy = wynik.wyrazy;
+	std::swap(this->size_x, this->size_y);
+
+	return wynik;
 }
+
 
