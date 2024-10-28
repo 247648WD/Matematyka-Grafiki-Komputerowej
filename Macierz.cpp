@@ -37,6 +37,11 @@ Macierz::Macierz(int size_x, int size_y) {
 	this->set_size_y(size_y);
 }
 
+void Macierz::reset() {
+	wyrazy.clear();
+	wyrazy.resize(this->size_x * this->size_y, 0);
+}
+
 void Macierz::set_number(int number) {
 	wyrazy.push_back(number);
 }
@@ -152,9 +157,7 @@ double Macierz::get_det() {
 	double wynik = 0;
 	for (int x = 0; x < this->size_x; x++) {
 		Macierz temp(this->size_x - 1, this->size_y - 1);
-		for (int i = 0; i < ((size_x - 1) * (size_y - 1)); i++) {
-			temp.wyrazy.push_back(0);
-		}
+		temp.reset();
 
 		for (int i = 1; i < this->size_x; i++) {
 			int subj = 0;
@@ -173,9 +176,7 @@ double Macierz::get_det() {
 
 Macierz Macierz::transposition() {
 	Macierz wynik(this->size_y, this->size_x);
-	for (int i = 0; i < (size_x * size_y); i++) {
-		wynik.wyrazy.push_back(0);
-	}
+	wynik.reset();
 	
 	double temp;
 
@@ -200,16 +201,12 @@ Macierz Macierz::inverse() {
 	}
 
 	Macierz cofactorMatrix(this->size_x, this->size_y);
-	for (int i = 0; i < (size_x * size_y); i++) {
-		cofactorMatrix.wyrazy.push_back(0);
-	}
+	cofactorMatrix.reset();
 
 	for (int i = 0; i < this->size_x; i++) {
 		for (int j = 0; j < this->size_y; j++) {
 			Macierz minorMatrix(this->size_x - 1, this->size_y - 1);
-			for (int i = 0; i < (size_x * size_y); i++) {
-				minorMatrix.wyrazy.push_back(0);
-			}
+			minorMatrix.reset();
 			int minorRow = 0;
 
 			for (int mi = 0; mi < this->size_x; mi++) {
