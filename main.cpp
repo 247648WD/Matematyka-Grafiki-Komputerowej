@@ -40,11 +40,5 @@ int main() {
     cout << v5.length() << endl;
     v5.print();
 
-    Wektory2D a2d = Wektory2D(1, 2);
-    Wektory2D b2d = Wektory2D(4, -1);
-    Wektory3D c3d = Wektory3D();
-    a2d.print();
-    c3d = a2d.iloczyn_wektorowy(b2d);
-    c3d.print();
     return 0;
 }
