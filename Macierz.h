@@ -22,11 +22,12 @@ public:
 	Macierz operator +(const Macierz& m1);
 	Macierz operator -(const Macierz& m1);
 	Macierz operator *(const double a);
+	void transposition();
 	~Macierz();
 
 	Macierz matrix_multi(Macierz& m1);
 	double get_number(int pos_x, int pos_y);
-	void set_gut_number(int pos_x, int pos_y, int number);
+	void set_gut_number(int pos_x, int pos_y, double number);
 	int get_size_x();
 	int get_size_y();
 
