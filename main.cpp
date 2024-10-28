@@ -40,9 +40,9 @@ int main() {
     v5 = v5.normalizacja();
     cout << v5.length() << endl;
     v5.print();*/
-    double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+    double pls[] = {1,2,3,4,5,6,7,8,9};
     Macierz m1 = Macierz(2, 2, true);
-    Macierz m2 = Macierz(4,3,pls);
+    Macierz m2 = Macierz(3,3,pls);
     //Macierz m3 = Macierz(3, 3, pls);
     Macierz m4 = Macierz();
 
