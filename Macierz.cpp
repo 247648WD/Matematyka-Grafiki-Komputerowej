@@ -50,7 +50,7 @@ double Macierz::get_number(int pos_x, int pos_y) {
 	return wyrazy.at(int(pos_x * get_size_x() + pos_y - (pos_x * (((pos_x + 1) / 2) - 1))));
 }
 
-void Macierz::set_gut_number(int pos_x, int pos_y, int number) {
+void Macierz::set_gut_number(int pos_x, int pos_y, double number) {
 	wyrazy.at(get_number(pos_x, pos_y) - 1) = number;
 }
 
@@ -154,3 +154,19 @@ double Macierz::get_det() {
 	}
 	return 1;
 }
+}
+
+
+void Macierz::transposition() {
+	Macierz wynik(this->size_x, this->size_y);
+
+	for (int i = 0; i < size_x; i++) {
+		for (int j = 0; j < size_y; j++) {
+			cout << this->get_number(i, j);
+			//wynik.set_gut_number(j, i, this->get_number(i, j));
+		}
+	}
+
+	//return wynik;
+}
+

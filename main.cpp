@@ -47,9 +47,10 @@ int main() {
     Macierz m4 = Macierz();
 
     m1.print_matrix();
-    cout << endl;
+    cout << endl << endl;
     m2.print_matrix();
-    cout << endl;
+    cout << endl << endl;
+    /*cout << endl;
     cout << m2.get_number(0, 2);
     cout << endl;
     m2.set_gut_number(0, 2, 15);
@@ -59,5 +60,10 @@ int main() {
     cout << endl;
     m4 = m3.matrix_multi(m2);
     m4.print_matrix();
+    cout << m2.get_number(0, 0);*/
+    m2.transposition();
+    cout << endl << endl;
+    m2.print_matrix();
+
     return 0;
 }
