@@ -1,11 +1,12 @@
 #include <iostream>
 #include "Wektory3D.h"
 #include "Wektory2D.h"
+#include "Macierz.h"
 
 using namespace std;
 
 int main() {
-    Wektory3D v1 = Wektory3D(0, 3, 0);
+    /*Wektory3D v1 = Wektory3D(0, 3, 0);
     Wektory3D v2 = Wektory3D(5, 5, 0);
     Wektory3D a_b = Wektory3D();
     Wektory3D b_a = Wektory3D();
@@ -38,7 +39,14 @@ int main() {
     cout << endl << "---------- zad.5 ----------" << endl;
     v5 = v5.normalizacja();
     cout << v5.length() << endl;
-    v5.print();
+    v5.print();*/
+
+    Macierz m1 = Macierz(2, 2, true);
+    Macierz m2 = Macierz(3,2);
+
+    m1.print_matrix();
+    cout << endl;
+    m2.print_matrix();
 
     return 0;
 }
