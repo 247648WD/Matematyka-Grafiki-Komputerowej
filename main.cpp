@@ -61,7 +61,7 @@ int main() {
     m4 = m3.matrix_multi(m2);
     m4.print_matrix();
     cout << m2.get_number(0, 0);*/
-    m2.transposition();
+    cout << m2.get_det();
     cout << endl << endl;
     m2.print_matrix();
 

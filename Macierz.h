@@ -22,7 +22,7 @@ public:
 	Macierz operator +(const Macierz& m1);
 	Macierz operator -(const Macierz& m1);
 	Macierz operator *(const double a);
-	void transposition();
+	Macierz transposition();
 	~Macierz();
 
 	Macierz matrix_multi(Macierz& m1);
@@ -31,6 +31,7 @@ public:
 	int get_size_x();
 	int get_size_y();
 	double get_det();
+	int get_rank();
 
 	void print_matrix();
 };
