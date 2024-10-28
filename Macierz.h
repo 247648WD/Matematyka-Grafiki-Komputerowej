@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <iomanip>
+#include <sstream>
 
 class Macierz
 {

@@ -71,6 +71,8 @@ int main() {
 
     m4 = m3.inverse();
     m4.print_matrix();
+    cout << endl << endl;
+    m4.print_matrix();
 
 
     return 0;

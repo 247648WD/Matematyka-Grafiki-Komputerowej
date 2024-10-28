@@ -73,12 +73,36 @@ void Macierz::set_size_y(int size_y) {
 }
 
 void Macierz::print_matrix() {
+	int max_width = 6;
+
 	for (int i = 0; i < size_x; i++) {
 		for (int j = 0; j < size_y; j++) {
-			cout << wyrazy.at(i * size_y + j) << " ";
+			cout << left << setprecision(2) << setw(max_width) << wyrazy.at(i * size_y + j);
 		}
 		cout << endl;
 	}
+	
+	/*vector<int> max_len_per_column(size_y, 0);
+
+	for (int j = 0; j < size_y; ++j) {
+		int max_len = 0;
+		for (int i = 0; i < size_x; ++i) {
+			ostringstream strs;
+			strs << wyrazy.at(i * size_y + j);
+			int num_length = strs.str().size();
+			max_len = max(max_len, num_length);
+		}
+		max_len_per_column[j] = max_len;
+	}
+
+	for (int i = 0; i < size_x; ++i) { 
+		for (int j = 0; j < size_y; ++j) {
+			cout << left << setw(max_len_per_column[j]) << wyrazy.at(i * size_y + j);
+			if (j < size_y - 1) 
+				cout << " ";
+		}
+		cout << endl;
+	}*/
 }
 
 Macierz Macierz::operator +(const Macierz& m1) {
