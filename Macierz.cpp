@@ -147,17 +147,33 @@ double Macierz::get_det() {
 	if (this->size_x != this->size_y) {
 		throw std::invalid_argument("Macierz musi byæ kwadratowa.");
 	}
-	double wynik = 0;
-	for (int i = 0; i < this->size_x - 1; i++) {
-		double temp = 1;
-		for (int j = 0; j < this->size_x; j++) {
-			temp *= this->get_number(j + i, j + i);
-		}
-		wynik += temp;
+	if (this->size_x == 1) {
+		return this->get_number(0, 0);
 	}
+	else if (this->size_x == 2) {
+		return (this->get_number(0, 0) * this->get_number(1, 1)) - (this->get_number(0, 1) * this->get_number(1, 0));
+	}
+
+	double wynik = 0;
+	for (int x = 0; x < this->size_x; x++) {
+		Macierz temp(this->size_x - 1, this->size_y - 1);
+		for (int i = 0; i < ((size_x - 1) * (size_y - 1)); i++) {
+			temp.wyrazy.push_back(0);
+		}
+
+		for (int i = 1; i < this->size_x; i++) {
+			int subj = 0;
+			for (int j = 0; j < this->size_y; j++) {
+				if (j == x) continue; 
+				temp.set_gut_number(i - 1, subj, this->get_number(i, j));
+				subj++;
+			}
+		}
+		wynik += pow(-1, x) * this->get_number(0, x) * temp.get_det();
+	}
+
 	return wynik;
 }
-
 
 Macierz Macierz::transposition() {
 	Macierz wynik(this->size_y, this->size_x);
