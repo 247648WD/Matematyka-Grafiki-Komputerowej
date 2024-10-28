@@ -96,13 +96,45 @@ Macierz Macierz::operator +(const Macierz& m1) {
 Macierz Macierz::operator -(const Macierz& m1) {
 
 	if (this->size_x != m1.size_x || this->size_y != m1.size_y) {
-		throw std::invalid_argument("Macierze musz¹ mieæ takie same wymiary do dodawania.");
+		throw std::invalid_argument("Macierze musz¹ mieæ takie same wymiary do odejmowania.");
 	}
 
 	Macierz wynik(this->size_x, this->size_y);
 
 	for (int i = 0; i < (size_x * size_y); i++) {
 		wynik.wyrazy.push_back(this->wyrazy[i] - m1.wyrazy[i]);
+	}
+
+	return wynik;
+}
+
+Macierz Macierz::operator *(const double a) {
+
+	Macierz wynik(this->size_x, this->size_y);
+
+	for (int i = 0; i < (size_x * size_y); i++) {
+		wynik.wyrazy.push_back(this->wyrazy[i] * a);
+	}
+
+	return wynik;
+}
+
+Macierz Macierz::matrix_multi (Macierz& m1) {
+
+	if (this->size_y != m1.size_x) {
+		throw std::invalid_argument("Macierze musz¹ mieæ odpowiednie wymiary do mno¿enie.");
+	}
+
+	Macierz wynik(this->size_x, m1.size_y);
+
+	for (int i = 0; i < this->size_x; i++) {
+		for (int j = 0; j < m1.size_y; j++) {
+			double temp = 0;
+			for (int k = 0; k < this->size_y; k++) {
+				temp += (this->get_number(i, k) * m1.get_number(k, j));
+			}
+			wynik.wyrazy.push_back(temp);
+		}
 	}
 
 	return wynik;

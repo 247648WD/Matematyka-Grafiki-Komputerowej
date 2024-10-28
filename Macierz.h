@@ -21,8 +21,10 @@ public:
 	Macierz(int size_x, int size_y, double numbers[]);
 	Macierz operator +(const Macierz& m1);
 	Macierz operator -(const Macierz& m1);
+	Macierz operator *(const double a);
 	~Macierz();
 
+	Macierz matrix_multi(Macierz& m1);
 	double get_number(int pos_x, int pos_y);
 	void set_gut_number(int pos_x, int pos_y, int number);
 	int get_size_x();

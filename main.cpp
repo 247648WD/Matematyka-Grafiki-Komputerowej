@@ -43,6 +43,8 @@ int main() {
     double pls[] = {1,2,3,4,5,6,7,8,9};
     Macierz m1 = Macierz(2, 2, true);
     Macierz m2 = Macierz(3,3,pls);
+    Macierz m3 = Macierz(3, 3, pls);
+    Macierz m4 = Macierz();
 
     m1.print_matrix();
     cout << endl;
@@ -52,6 +54,10 @@ int main() {
     cout << endl;
     m2.set_gut_number(0, 2, 15);
     cout << m2.get_number(0, 0);
-
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    m4 = m3.matrix_multi(m2);
+    m4.print_matrix();
     return 0;
 }
