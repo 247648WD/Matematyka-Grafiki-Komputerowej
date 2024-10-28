@@ -26,6 +26,7 @@ public:
 
 	Macierz matrix_multi(Macierz& m1);
 	Macierz transposition();
+	Macierz inverse();
 	double get_number(int pos_x, int pos_y);
 	void set_gut_number(int pos_x, int pos_y, double number);
 	int get_size_x();

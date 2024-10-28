@@ -35,11 +35,6 @@ Macierz::Macierz(int size_x, int size_y, bool is_unit) {
 Macierz::Macierz(int size_x, int size_y) {
 	this->set_size_x(size_x);
 	this->set_size_y(size_y);
-	/*double temp;
-	for (int i = 0; i < (size_x * size_y); i++) {
-		cin >> temp;
-		wyrazy.push_back(temp);
-	}*/
 }
 
 void Macierz::set_number(int number) {
@@ -164,7 +159,8 @@ double Macierz::get_det() {
 		for (int i = 1; i < this->size_x; i++) {
 			int subj = 0;
 			for (int j = 0; j < this->size_y; j++) {
-				if (j == x) continue; 
+				if (j == x) 
+					continue; 
 				temp.set_gut_number(i - 1, subj, this->get_number(i, j));
 				subj++;
 			}
@@ -191,4 +187,49 @@ Macierz Macierz::transposition() {
 	}
 
 	return wynik;
+}
+
+Macierz Macierz::inverse() {
+	if (this->size_x != this->size_y) {
+		throw std::invalid_argument("Macierz nie jest kwadratowa!");
+	}
+
+	double det = this->get_det();
+	if (det == 0) {
+		throw std::invalid_argument("Wyznacznik macierzy nie mo¿e byæ równy 0!");
+	}
+
+	Macierz cofactorMatrix(this->size_x, this->size_y);
+	for (int i = 0; i < (size_x * size_y); i++) {
+		cofactorMatrix.wyrazy.push_back(0);
+	}
+
+	for (int i = 0; i < this->size_x; i++) {
+		for (int j = 0; j < this->size_y; j++) {
+			Macierz minorMatrix(this->size_x - 1, this->size_y - 1);
+			for (int i = 0; i < (size_x * size_y); i++) {
+				minorMatrix.wyrazy.push_back(0);
+			}
+			int minorRow = 0;
+
+			for (int mi = 0; mi < this->size_x; mi++) {
+				if (mi == i) continue;
+
+				int minorCol = 0;
+				for (int mj = 0; mj < this->size_y; mj++) {
+					if (mj == j) continue;
+					minorMatrix.set_gut_number(minorRow, minorCol, this->get_number(mi, mj));
+					minorCol++;
+				}
+				minorRow++;
+			}
+			double cofactor = pow(-1, i + j) * minorMatrix.get_det();
+			cofactorMatrix.set_gut_number(i, j, cofactor);
+		}
+	}
+
+	Macierz adjugateMatrix = cofactorMatrix.transposition();
+	Macierz inverseMatrix = adjugateMatrix * (1.0 / det);
+
+	return inverseMatrix;
 }
