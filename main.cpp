@@ -64,6 +64,7 @@ int main() {
     Macierz mm1 = Macierz(3, 3, plsm1);
     Macierz mm2 = Macierz(3, 3, plsm2);
     Macierz mm3 = Macierz();
+    Macierz rotatex = Macierz();
 
     cout << "Macierz zerowa:" << endl;
     m0.print_matrix();
@@ -110,9 +111,12 @@ int main() {
     cout << endl << "Obracanie wektora o 90 stopni wzglêdem osi Y:" << endl;
     my.print_matrix();
     cout << endl;
-    mry.print_matrix();
-    cout << endl;
-    mm3 = my.matrix_multi(mry);
+    mm3 = mm3.rotate_y(-1*M_PI/2);
+    //rotatex.rotate_y(-1*M_PI /2);
+    mm3 = my.matrix_multi(mm3);
+    //mry.print_matrix();
+    //cout << endl;
+    //mm3 = my.matrix_multi(mry);
     mm3.print_matrix();
 
     return 0;

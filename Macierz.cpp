@@ -74,36 +74,18 @@ void Macierz::set_size_y(int size_y) {
 }
 
 void Macierz::print_matrix() {
-	int max_width = 6;
+	int max_width = 8;
+	double Epsilon = 0.0001;
 
 	for (int i = 0; i < size_x; i++) {
 		for (int j = 0; j < size_y; j++) {
-			cout << left << setprecision(2) << setw(max_width) << wyrazy.at(i * size_y + j);
+			if(abs(wyrazy.at(i * size_y + j)) < Epsilon)
+				cout << left << setprecision(2) << setw(max_width) << 0;
+			else
+				cout << left << setprecision(2) << setw(max_width) << wyrazy.at(i * size_y + j);
 		}
 		cout << endl;
 	}
-	
-	/*vector<int> max_len_per_column(size_y, 0);
-
-	for (int j = 0; j < size_y; ++j) {
-		int max_len = 0;
-		for (int i = 0; i < size_x; ++i) {
-			ostringstream strs;
-			strs << wyrazy.at(i * size_y + j);
-			int num_length = strs.str().size();
-			max_len = max(max_len, num_length);
-		}
-		max_len_per_column[j] = max_len;
-	}
-
-	for (int i = 0; i < size_x; ++i) { 
-		for (int j = 0; j < size_y; ++j) {
-			cout << left << setw(max_len_per_column[j]) << wyrazy.at(i * size_y + j);
-			if (j < size_y - 1) 
-				cout << " ";
-		}
-		cout << endl;
-	}*/
 }
 
 Macierz Macierz::operator +(const Macierz& m1) {
@@ -256,49 +238,56 @@ Macierz Macierz::inverse() {
 	return inverseMatrix;
 }
 
-void Macierz::translation(Wektory3D v1) {
-	if (this->size_x != this->size_y && this->size_x == 4) {
-		throw std::invalid_argument("Macierz musi byæ 4x4!");
-	}
+Macierz Macierz::translation(Wektory3D v1) {
+	Macierz wynik = Macierz(4, 4, true);
 
-	this->set_gut_number(0, 3, v1.get_x() + this->get_number(0, 3));
-	this->set_gut_number(1, 3, v1.get_y() + this->get_number(1, 3));
-	this->set_gut_number(2, 3, v1.get_z() + this->get_number(2, 3));
+	wynik.set_gut_number(0, 3, v1.get_x());
+	wynik.set_gut_number(1, 3, v1.get_y());
+	wynik.set_gut_number(2, 3, v1.get_z());
+
+	return wynik;
 }
 
-void Macierz::scale(Wektory3D v1) {
-	if (this->size_x != this->size_y && this->size_x == 4) {
-		throw std::invalid_argument("Macierz musi byæ 4x4!");
-	}
+Macierz Macierz::scale(Wektory3D v1) {
+	Macierz wynik = Macierz(4, 4, true);
 
-	this->set_gut_number(0, 0, v1.get_x() * this->get_number(0, 0));
-	this->set_gut_number(1, 1, v1.get_y() * this->get_number(1, 1));
-	this->set_gut_number(2, 2, v1.get_z() * this->get_number(2, 2));
+	wynik.set_gut_number(0, 0, v1.get_x());
+	wynik.set_gut_number(1, 1, v1.get_y());
+	wynik.set_gut_number(2, 2, v1.get_z());
+
+	return wynik;
 }
 
-void Macierz::rotate(Wektory3D v1) {
-	if (this->size_x != this->size_y && this->size_x == 4) {
-		throw std::invalid_argument("Macierz musi byæ 4x4!");
-	}
+Macierz Macierz::rotate_x(double angle) {
+	Macierz wynik = Macierz(4, 4, true);
 
-	// Rotate by X
+	wynik.set_gut_number(1, 1, cos(angle));
+	wynik.set_gut_number(1, 2, -sin(angle));
+	wynik.set_gut_number(2, 1, sin(angle));
+	wynik.set_gut_number(2, 2, cos(angle));
 
-	this->set_gut_number(1, 1, cos(v1.get_x()) + this->get_number(0, 0));
-	this->set_gut_number(1, 2, -sin(v1.get_x()) + this->get_number(1, 2));
-	this->set_gut_number(2, 1, sin(v1.get_x()) + this->get_number(2, 1));
-	this->set_gut_number(2, 2, cos(v1.get_x()) + this->get_number(2, 2));
-
-	// Rotate by Y
-
-	this->set_gut_number(0, 0, cos(v1.get_y()) + this->get_number(0, 0));
-	this->set_gut_number(0, 2, sin(v1.get_y()) + this->get_number(0, 2));
-	this->set_gut_number(2, 0, -sin(v1.get_y()) + this->get_number(2, 0));
-	this->set_gut_number(2, 2, cos(v1.get_y()) + this->get_number(2, 2));
-
-	// Rotate by Z
-
-	this->set_gut_number(0, 0, cos(v1.get_z()) + this->get_number(0, 0));
-	this->set_gut_number(0, 1, -sin(v1.get_z()) + this->get_number(0, 1));
-	this->set_gut_number(1, 0, sin(v1.get_z()) + this->get_number(1, 0));
-	this->set_gut_number(1, 1, cos(v1.get_z()) + this->get_number(1, 1));
+	return wynik;
 }
+
+Macierz Macierz::rotate_y(double angle) {
+	Macierz wynik = Macierz(4, 4, true);
+
+	wynik.set_gut_number(0, 0, cos(angle));
+	wynik.set_gut_number(0, 2, sin(angle));
+	wynik.set_gut_number(2, 0, -sin(angle));
+	wynik.set_gut_number(2, 2, cos(angle));
+
+	return wynik;
+}
+
+Macierz Macierz::rotate_z(double angle) {
+	Macierz wynik = Macierz(4, 4, true);
+
+	wynik.set_gut_number(0, 0, cos(angle));
+	wynik.set_gut_number(0, 1, -sin(angle));
+	wynik.set_gut_number(1, 0, sin(angle));
+	wynik.set_gut_number(1, 1, cos(angle));
+
+	return wynik;
+}
+

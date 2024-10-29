@@ -5,7 +5,6 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-#include <sstream>
 #include "Wektory3D.h"
 
 class Macierz
@@ -31,9 +30,11 @@ public:
 	Macierz transposition();
 	Macierz inverse();
 
-	void translation(Wektory3D v1);
-	void scale(Wektory3D v1);
-	void rotate(Wektory3D v1);
+	Macierz translation(Wektory3D v1);
+	Macierz scale(Wektory3D v1);
+	Macierz rotate_x(double angle);
+	Macierz rotate_y(double angle);
+	Macierz rotate_z(double angle);
 
 	void reset();
 	double get_number(int pos_x, int pos_y);
