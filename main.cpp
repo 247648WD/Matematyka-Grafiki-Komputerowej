@@ -40,16 +40,17 @@ int main() {
     v5 = v5.normalizacja();
     cout << v5.length() << endl;
     v5.print();*/
-    double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+    double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12, 13,14,15,16};
     double pls1[] = {2,1,4,3,4,1,2,1,1};
-    Macierz m1 = Macierz(2, 2, true);
-    Macierz m2 = Macierz(4,3,pls);
+    Macierz m1 = Macierz(4, 4, true);
+    Macierz m2 = Macierz(4,4,pls);
     Macierz m3 = Macierz(3, 3, pls1);
     Macierz m4 = Macierz();
 
     m1.print_matrix();
     cout << endl << endl;
     m2.print_matrix();
+    cout << endl << endl;
     /*cout << endl << endl;
     cout << endl;
     cout << m2.get_number(0, 2);
@@ -63,7 +64,7 @@ int main() {
     /*m4 = m3.matrix_multi(m2);
     m4.print_matrix();
     cout << m2.get_number(0, 0);*/
-    m4 = m2.transposition();
+    /*m4 = m2.transposition();
     cout << endl << endl;
     m4.print_matrix();
     double det = 0;
@@ -72,7 +73,17 @@ int main() {
     m4 = m3.inverse();
     m4.print_matrix();
     cout << endl << endl;
-    m4.print_matrix();
+    m4.print_matrix();*/
+    Wektory3D v3 = Wektory3D(0, 5, 0);
+    m2.translation(v3);
+    m2.print_matrix();
+    cout << endl << endl;
+    m1.print_matrix();
+   
+    //m1.scale(v3);
+    m1.rotate(v3);
+    cout << endl << endl;
+    m1.print_matrix();
 
 
     return 0;
