@@ -1,4 +1,5 @@
 #include "Macierz.h"
+#include "Wektory3D.h"
 
 using namespace std;
 
@@ -253,4 +254,51 @@ Macierz Macierz::inverse() {
 	Macierz inverseMatrix = adjugateMatrix * (1.0 / det);
 
 	return inverseMatrix;
+}
+
+void Macierz::translation(Wektory3D v1) {
+	if (this->size_x != this->size_y && this->size_x == 4) {
+		throw std::invalid_argument("Macierz musi byæ 4x4!");
+	}
+
+	this->set_gut_number(0, 3, v1.get_x() + this->get_number(0, 3));
+	this->set_gut_number(1, 3, v1.get_y() + this->get_number(1, 3));
+	this->set_gut_number(2, 3, v1.get_z() + this->get_number(2, 3));
+}
+
+void Macierz::scale(Wektory3D v1) {
+	if (this->size_x != this->size_y && this->size_x == 4) {
+		throw std::invalid_argument("Macierz musi byæ 4x4!");
+	}
+
+	this->set_gut_number(0, 0, v1.get_x() * this->get_number(0, 0));
+	this->set_gut_number(1, 1, v1.get_y() * this->get_number(1, 1));
+	this->set_gut_number(2, 2, v1.get_z() * this->get_number(2, 2));
+}
+
+void Macierz::rotate(Wektory3D v1) {
+	if (this->size_x != this->size_y && this->size_x == 4) {
+		throw std::invalid_argument("Macierz musi byæ 4x4!");
+	}
+
+	// Rotate by X
+
+	this->set_gut_number(1, 1, cos(v1.get_x()) + this->get_number(0, 0));
+	this->set_gut_number(1, 2, -sin(v1.get_x()) + this->get_number(1, 2));
+	this->set_gut_number(2, 1, sin(v1.get_x()) + this->get_number(2, 1));
+	this->set_gut_number(2, 2, cos(v1.get_x()) + this->get_number(2, 2));
+
+	// Rotate by Y
+
+	this->set_gut_number(0, 0, cos(v1.get_y()) + this->get_number(0, 0));
+	this->set_gut_number(0, 2, sin(v1.get_y()) + this->get_number(0, 2));
+	this->set_gut_number(2, 0, -sin(v1.get_y()) + this->get_number(2, 0));
+	this->set_gut_number(2, 2, cos(v1.get_y()) + this->get_number(2, 2));
+
+	// Rotate by Z
+
+	this->set_gut_number(0, 0, cos(v1.get_z()) + this->get_number(0, 0));
+	this->set_gut_number(0, 1, -sin(v1.get_z()) + this->get_number(0, 1));
+	this->set_gut_number(1, 0, sin(v1.get_z()) + this->get_number(1, 0));
+	this->set_gut_number(1, 1, cos(v1.get_z()) + this->get_number(1, 1));
 }
