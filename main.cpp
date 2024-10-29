@@ -1,7 +1,10 @@
 #include <iostream>
+#include <fstream>
 #include "Wektory3D.h"
 #include "Wektory2D.h"
 #include "Macierz.h"
+
+#define M_PI 3.14159265358979323846 
 
 using namespace std;
 
@@ -40,40 +43,77 @@ int main() {
     v5 = v5.normalizacja();
     cout << v5.length() << endl;
     v5.print();*/
+
     double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12};
     double pls1[] = {2,1,4,3,4,1,2,1,1};
+    double pls2[] = {1,0,0,1};
+    double pls3[] = {-2,3,5,4,9,1,-2,1,6};
+    double plsm1[] = {1,2,-3,0,-4,1,3,4,5};
+    double plsm2[] = {1,2,6,0,5,7,1,0,7};
+    //double plsy[] = { cos(M_PI ), 0,sin(M_PI ),0,0,1,0,0,-sin(M_PI ),0,-cos(M_PI ),0,0,0,0,1};
+    double plsy[] = { 0, 0,1,0,0,1,0,0,-1,0,0,0,0,0,0,1 };
+    Macierz m0 = Macierz(2, 2, false);
     Macierz m1 = Macierz(2, 2, true);
     Macierz m2 = Macierz(4,3,pls);
     Macierz m3 = Macierz(3, 3, pls1);
     Macierz m4 = Macierz();
+    Macierz m5 = Macierz(3, 4, pls);
+    Macierz m6 = Macierz(4, 3, pls3);
+    Macierz my = Macierz(1, 4, pls2);
+    Macierz mry = Macierz(4, 4, plsy);
+    Macierz mm1 = Macierz(3, 3, plsm1);
+    Macierz mm2 = Macierz(3, 3, plsm2);
+    Macierz mm3 = Macierz();
 
+    cout << "Macierz zerowa:" << endl;
+    m0.print_matrix();
+    cout << endl << "Macierz jednostkowa:" << endl;
     m1.print_matrix();
-    cout << endl << endl;
+    cout << endl << "Macierz:" << endl;
     m2.print_matrix();
-    /*cout << endl << endl;
+    cout << endl << "Dodawanie 3x3 macierzy:" << endl;
+    m3.print_matrix();
     cout << endl;
-    cout << m2.get_number(0, 2);
-    cout << endl;
-    m2.set_gut_number(0, 2, 15);
-    cout << m2.get_number(0, 0);
-    cout << endl;
-    cout << endl;
-    cout << endl;
-    m2.print_matrix();*/
-    /*m4 = m3.matrix_multi(m2);
+    m4 = m3 + m3;
     m4.print_matrix();
-    cout << m2.get_number(0, 0);*/
+    cout << endl << "Odejmowanie 3x3 macierzy:" << endl;
+    m4 = m4 - m3;
+    m4.print_matrix();
+    cout << endl << "Mno¿enie macierzy przez skalar równy 2:" << endl;
+    m4.print_matrix();
+    cout << endl;
+    m4 = m4 * 2;
+    m4.print_matrix();
+    cout << endl << "Transpozycja macierzy:" << endl;
     m4 = m2.transposition();
-    cout << endl << endl;
+    cout << endl;
     m4.print_matrix();
-    double det = 0;
-    cout << endl << m3.get_det() << endl << endl;
-
+    cout << endl << "Wyznacznik macierzy:" << endl;
+    cout << m3.get_det();
+    cout << endl << "Odwracanie macierzy:" << endl;
     m4 = m3.inverse();
     m4.print_matrix();
-    cout << endl << endl;
-    m4.print_matrix();
-
+    cout << endl << "Mno¿enie macierzy:" << endl;
+    mm1.print_matrix();
+    cout << endl;
+    mm2.print_matrix();
+    cout << endl;
+    mm3 = mm1.matrix_multi(mm2);
+    mm3.print_matrix();
+    cout << endl << "Odwrotne mno¿enie macierzy daje inny wynik:" << endl;
+    mm2.print_matrix();
+    cout << endl;
+    mm1.print_matrix();
+    cout << endl;
+    mm3 = mm2.matrix_multi(mm1);
+    mm3.print_matrix();
+    cout << endl << "Obracanie wektora o 90 stopni wzglêdem osi Y:" << endl;
+    my.print_matrix();
+    cout << endl;
+    mry.print_matrix();
+    cout << endl;
+    mm3 = my.matrix_multi(mry);
+    mm3.print_matrix();
 
     return 0;
 }
