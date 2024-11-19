@@ -3,6 +3,7 @@
 #include "Wektory3D.h"
 #include "Wektory2D.h"
 #include "Macierz.h"
+#include "Kwateriony.h"
 
 #define M_PI 3.14159265358979323846 
 
@@ -44,7 +45,7 @@ int main() {
     cout << v5.length() << endl;
     v5.print();*/
 
-    double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+    /*double pls[] = {1,2,3,4,5,6,7,8,9,10,11,12};
     double pls1[] = {2,1,4,3,4,1,2,1,1};
     double pls2[] = {1,0,0,1};
     double pls3[] = {-2,3,5,4,9,1,-2,1,6};
@@ -112,12 +113,59 @@ int main() {
     my.print_matrix();
     cout << endl;
     mm3 = mm3.rotate_y(-1*M_PI/2);
-    //rotatex.rotate_y(-1*M_PI /2);
     mm3 = my.matrix_multi(mm3);
-    //mry.print_matrix();
-    //cout << endl;
-    //mm3 = my.matrix_multi(mry);
-    mm3.print_matrix();
+    mm3.print_matrix();*/
 
+    Kwateriony q1 = Kwateriony(1, 2, 3, 4);
+    Kwateriony q2 = Kwateriony(1, 1, 1, 1);
+    Kwateriony res = Kwateriony();
+    Kwateriony rot = Kwateriony(0, 1, 0, 0);
+    Kwateriony q3 = Kwateriony(0, 3, 3, 3);
+    Kwateriony q4 = Kwateriony(0, -1, -1, -1);
+
+    cout << "Dodawanie kwaterionow: " << endl;
+    q1.print_quaterion();
+    q2.print_quaterion();
+    res = q1.addition(q2);
+    cout << endl;
+    res.print_quaterion();
+    cout << endl << "Odejmowanie kwaterionow: " << endl;
+    res.print_quaterion();
+    q2.print_quaterion();
+    res = res.substraction(q2);
+    cout << endl;
+    res.print_quaterion();
+    cout << endl << "Mnozenie kwaterionow: " << endl;
+    q1.print_quaterion();
+    q2.print_quaterion();
+    res = q1.multiplication(q2);
+    cout << endl;
+    res.print_quaterion();
+    cout << endl << "Dzielenie kwaterionow: " << endl;
+    q1.print_quaterion();
+    q2.print_quaterion();
+    res = q1.division(q2);
+    cout << endl;
+    res.print_quaterion();
+    cout << endl << "Obracanie: " << endl;
+    q3.print_quaterion();
+    Wektory3D a = Wektory3D(q3.get_i(), q3.get_j(), q3.get_k());
+    res = rot.rotation(180, a);
+    cout << endl;
+    res.print_quaterion();
+
+    cout << endl << "Obracanie punktu [-1,-1,-1] o 270 stopni woko³ osi X: " << endl;
+    q4.print_quaterion();
+    Wektory3D b = Wektory3D(q4.get_i(), q4.get_j(), q4.get_k());
+    res = rot.rotation(180, b);
+    cout << endl;
+    res.print_quaterion();
+
+    cout << endl << "Odwrotne mnozenie kwaterionow: " << endl;
+    q2.print_quaterion();
+    q1.print_quaterion();
+    res = q2.multiplication(q1);
+    cout << endl;
+    res.print_quaterion();
     return 0;
 }

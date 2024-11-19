@@ -9,13 +9,15 @@ private:
     double y;
     double z;
 
-    void set_x(double x);
-    void set_y(double y);
-    void set_z(double z);
+    
 public:
     Wektory3D();
     Wektory3D(double x, double y, double z);
     ~Wektory3D();
+
+    void set_x(double x);
+    void set_y(double y);
+    void set_z(double z);
 
     double get_x();
     double get_y();
