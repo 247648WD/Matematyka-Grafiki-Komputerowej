@@ -44,6 +44,13 @@ public:
         Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
         Wektory3D p2, Wektory3D d2   // Punkt i wektor kierunkowy linii 2
     );
+
+    bool punktPrzecieciaZPlaszczyzna(
+        Wektory3D p1,        // Punkt na prostej
+        Wektory3D d1,        // Wektor kierunkowy prostej
+        Wektory3D p2, 
+        double D  
+    );
 };
 
 #endif // !WEKTORY3D_H

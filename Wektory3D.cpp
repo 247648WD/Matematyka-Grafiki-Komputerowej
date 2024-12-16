@@ -133,7 +133,7 @@ bool Wektory3D::punktPrzeciecia(
 ) {
 
     Wektory3D deltaP = p2 - p1;
-
+    
     double A1 = d1.get_x(), B1 = -d2.get_x(), C1 = deltaP.get_x();
     double A2 = d1.get_y(), B2 = -d2.get_y(), C2 = deltaP.get_y();
     double A3 = d1.get_z(), B3 = -d2.get_z(), C3 = deltaP.get_z();
@@ -155,5 +155,26 @@ bool Wektory3D::punktPrzeciecia(
     this->x = p1.get_x() + t * d1.get_x();
     this->y = p1.get_y() + t * d1.get_y();
     this->z = p1.get_z() + t * d1.get_z();
+    return true;
+}
+
+bool Wektory3D::punktPrzecieciaZPlaszczyzna(
+    Wektory3D p,        // Punkt na prostej
+    Wektory3D d,        // Wektor kierunkowy prostej
+    Wektory3D n,        // Wektor normalny
+    double D
+) {
+    double denominator = n.get_x() * d.get_x() + n.get_y() * d.get_y() + n.get_z() * d.get_z();
+
+    if (fabs(denominator) < 1e-6) {
+        return false;
+    }
+
+    double t = -(n.get_x() * p.get_x() + n.get_y() * p.get_y() + n.get_z() * p.get_z() + D) / denominator;
+
+    this->x = p.get_x() + t * d.get_x();
+    this->y = p.get_y() + t * d.get_y();
+    this->z = p.get_z() + t * d.get_z();
+
     return true;
 }

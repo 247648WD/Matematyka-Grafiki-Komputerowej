@@ -15,14 +15,8 @@ int main() {
 
     Wektory3D v2 = Wektory3D(-2, 4, 0);
     Wektory3D t2 = Wektory3D(1, -5, 3);
-
-    Wektory3D v3 = Wektory3D(7, -3, 1);
-    Wektory3D t3 = Wektory3D(-2, 5, 1);
-
-    Wektory3D v4 = Wektory3D(8, -1, -1);
-    Wektory3D t4 = Wektory3D(1, -4, 0);
     Wektory3D punkt;
-    if (punkt.punktPrzeciecia(v1, t1, v3, t1)) {
+    if (punkt.punktPrzeciecia(v1, t1, v2, t2)) {
         cout << "Punkt przeciecia: ";
         punkt.print();
     }
@@ -32,6 +26,19 @@ int main() {
 
     cout << "Kat miedzy prostymi w radianach: " << t1.katy(t2, 0) << endl;
     cout << "Kat miedzy prostymi w stopniach: " << t1.katy(t2, 1) << endl;
+    
+    Wektory3D v5 = Wektory3D(-2, 2, -1);
+    Wektory3D d = Wektory3D(3, -1, 2);
+    Wektory3D n = Wektory3D(2, 3, 3);
+    Wektory3D punkt2;
+    if (punkt2.punktPrzecieciaZPlaszczyzna(v5, d, n, -8)) {
+        cout << "Punkt przeciecia: ";
+        punkt2.print();
+    }
+    else {
+        cout << "Linie sie nie przecinaja." << endl;
+    }
+
 
     /*Wektory3D v1 = Wektory3D(0, 3, 0);
     Wektory3D v2 = Wektory3D(5, 5, 0);
