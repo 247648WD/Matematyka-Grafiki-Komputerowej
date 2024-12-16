@@ -154,10 +154,10 @@ int main() {
     cout << endl;
     res.print_quaterion();
 
-    cout << endl << "Obracanie punktu [-1,-1,-1] o 270 stopni woko³ osi X: " << endl;
+    cout << endl << "Obracanie punktu [-1,-1,-1] o 270 stopni wokol osi X: " << endl;
     q4.print_quaterion();
     Wektory3D b = Wektory3D(q4.get_i(), q4.get_j(), q4.get_k());
-    res = rot.rotation(180, b);
+    res = rot.rotation(270, b);
     cout << endl;
     res.print_quaterion();
 
