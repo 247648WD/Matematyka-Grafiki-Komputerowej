@@ -10,6 +10,21 @@
 using namespace std;
 
 int main() {
+    ////zad 1
+    //Wektory3D v1 = Wektory3D(-2, 4, 0);
+    //Wektory3D t1 = Wektory3D(3, 1, 5);
+
+    //Wektory3D v2 = Wektory3D(-2, 4, 0);
+    //Wektory3D t2 = Wektory3D(1, -5, 3);
+    //Wektory3D punkt;
+    //if (punkt.punktPrzeciecia(v1, t1, v2, t2)) {
+    //    cout << "Punkt przeciecia: ";
+    //    punkt.print();
+    //}
+    //else {
+    //    cout << "Linie sie nie przecinaja." << endl;
+    //}
+
     //zad 1
     Wektory3D v1 = Wektory3D(-2, 4, 0);
     Wektory3D t1 = Wektory3D(3, 1, 5);
@@ -21,9 +36,7 @@ int main() {
         cout << "Punkt przeciecia: ";
         punkt.print();
     }
-    else {
-        cout << "Linie sie nie przecinaja." << endl;
-    }
+    
 
     //zad 2
     cout << "Kat miedzy prostymi w radianach: " << t1.katy(t2, 0) << endl;
@@ -46,7 +59,38 @@ int main() {
     cout << "Kat miedzy prosta a plaszczyzna w radianach: " << 1 - d.katy(n, 0) << endl;
     cout << "Kat miedzy prosta a plaszczyzna w stopniach: " << 90 - d.katy(n, 1) << endl;
 
+    //zad 7
+    Wektory3D A = Wektory3D(5, 5, 4);
+    Wektory3D A_p = Wektory3D(10, 10, 6);
+    Wektory3D A_temp = A_p - A;
 
+    Wektory3D B = Wektory3D(5, 5, 5);
+    Wektory3D B_p = Wektory3D(10, 10, 3);
+    Wektory3D B_temp = B_p - B;
+
+    Wektory3D punkt3;
+    if (punkt3.punktPrzeciecia(A, A_temp, B, B_temp)) {
+        cout << "Punkt przeciecia: ";
+        punkt3.print();
+    }
+    
+    /*Wektory3D test = A_temp.iloczyn_wektorowy(B_temp);
+    test.print();
+
+    test = A_temp.iloczyn_wektorowy(test);
+    test.print();
+
+    double T = A.iloczyn_skalarny(test);
+    cout << T << endl;
+
+    double X = B.iloczyn_skalarny(test);
+    cout << X << endl;
+    double wynik = B_temp.iloczyn_skalarny(test);
+    cout << wynik << endl;
+
+    double end = (T - X) / wynik;
+    cout << end << endl;*/
+    
 
     /*Wektory3D v1 = Wektory3D(0, 3, 0);
     Wektory3D v2 = Wektory3D(5, 5, 0);
