@@ -40,6 +40,11 @@ public:
     Wektory3D iloczyn_wektorowy(Wektory3D a);
     double katy(Wektory3D v, bool rodzaj);
     void check(Wektory3D v1);
+    bool punktPrzeciecia(
+        Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
+        Wektory3D p2, Wektory3D d2,  // Punkt i wektor kierunkowy linii 2
+        Wektory3D& wynik             // Punkt przeciêcia (jeœli istnieje)
+    );
 };
 
 #endif // !WEKTORY3D_H

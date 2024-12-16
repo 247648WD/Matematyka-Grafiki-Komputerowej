@@ -10,6 +10,26 @@
 using namespace std;
 
 int main() {
+    Wektory3D v1 = Wektory3D(-2, 4, 0);
+    Wektory3D t1 = Wektory3D(3, 1, 5);
+
+    Wektory3D v2 = Wektory3D(-2, 4, 0);
+    Wektory3D t2 = Wektory3D(1, -5, 3);
+
+    Wektory3D v3 = Wektory3D(7, -3, 1);
+    Wektory3D t3 = Wektory3D(-2, 5, 1);
+
+    Wektory3D v4 = Wektory3D(8, -1, -1);
+    Wektory3D t4 = Wektory3D(1, -4, 0);
+    Wektory3D punkt;
+    if (punkt.punktPrzeciecia(v3, t3, v4, t4, punkt)) {
+        cout << "Punkt przeciecia: ";
+        punkt.print();
+    }
+    else {
+        cout << "Linie siê nie przecinaj¹." << endl;
+    }
+
     /*Wektory3D v1 = Wektory3D(0, 3, 0);
     Wektory3D v2 = Wektory3D(5, 5, 0);
     Wektory3D a_b = Wektory3D();
@@ -116,7 +136,7 @@ int main() {
     mm3 = my.matrix_multi(mm3);
     mm3.print_matrix();*/
 
-    Kwateriony q1 = Kwateriony(1, 2, 3, 4);
+    /*Kwateriony q1 = Kwateriony(1, 2, 3, 4);
     Kwateriony q2 = Kwateriony(1, 1, 1, 1);
     Kwateriony res = Kwateriony();
     Kwateriony rot = Kwateriony(0, 1, 0, 0);
@@ -166,6 +186,6 @@ int main() {
     q1.print_quaterion();
     res = q2.multiplication(q1);
     cout << endl;
-    res.print_quaterion();
+    res.print_quaterion();*/
     return 0;
 }

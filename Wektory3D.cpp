@@ -126,3 +126,35 @@ void Wektory3D::check(Wektory3D v1) {
     else
         cout << "Wektory3D sa rozne" << endl;
 }
+
+bool Wektory3D::punktPrzeciecia(
+    Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
+    Wektory3D p2, Wektory3D d2,  // Punkt i wektor kierunkowy linii 2
+    Wektory3D& wynik             // Punkt przeciêcia
+) {
+
+    Wektory3D deltaP = p2 - p1;
+
+    double A1 = d1.get_x(), B1 = -d2.get_x(), C1 = deltaP.get_x();
+    double A2 = d1.get_y(), B2 = -d2.get_y(), C2 = deltaP.get_y();
+    double A3 = d1.get_z(), B3 = -d2.get_z(), C3 = deltaP.get_z();
+
+    double det = A1 * B2 - A2 * B1;
+    if (fabs(det) < 1e-6) {
+        cout << "Linie s¹ równoleg³e lub skoœne - brak przeciêcia." << endl;
+        return false;
+    }
+
+    double t = (C1 * B2 - C2 * B1) / det;
+    double u = (A1 * C2 - A2 * C1) / det;
+
+    double z1_check = p1.get_z() + t * d1.get_z();
+    double z2_check = p2.get_z() + u * d2.get_z();
+    if (fabs(z1_check - z2_check) > 1e-6) {
+        cout << "Brak punktu przeciêcia - linie skoœne." << endl;
+        return false;
+    }
+
+    wynik = p1 + d1 * t;
+    return true;
+}
