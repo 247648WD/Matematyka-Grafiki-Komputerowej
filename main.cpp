@@ -22,12 +22,12 @@ int main() {
     Wektory3D v4 = Wektory3D(8, -1, -1);
     Wektory3D t4 = Wektory3D(1, -4, 0);
     Wektory3D punkt;
-    if (punkt.punktPrzeciecia(v3, t3, v4, t4, punkt)) {
+    if (punkt.punktPrzeciecia(v1, t1, v3, t1)) {
         cout << "Punkt przeciecia: ";
         punkt.print();
     }
     else {
-        cout << "Linie siê nie przecinaj¹." << endl;
+        cout << "Linie sie nie przecinaja." << endl;
     }
 
     /*Wektory3D v1 = Wektory3D(0, 3, 0);

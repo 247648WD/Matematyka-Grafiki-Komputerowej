@@ -129,8 +129,7 @@ void Wektory3D::check(Wektory3D v1) {
 
 bool Wektory3D::punktPrzeciecia(
     Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
-    Wektory3D p2, Wektory3D d2,  // Punkt i wektor kierunkowy linii 2
-    Wektory3D& wynik             // Punkt przeciêcia
+    Wektory3D p2, Wektory3D d2  // Punkt i wektor kierunkowy linii 2
 ) {
 
     Wektory3D deltaP = p2 - p1;
@@ -155,6 +154,8 @@ bool Wektory3D::punktPrzeciecia(
         return false;
     }
 
-    wynik = p1 + d1 * t;
+    this->x = p1.get_x() + t * d1.get_x();
+    this->y = p1.get_y() + t * d1.get_y();
+    this->z = p1.get_z() + t * d1.get_z();
     return true;
 }
