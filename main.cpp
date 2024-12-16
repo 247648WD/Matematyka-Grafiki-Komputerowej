@@ -30,6 +30,9 @@ int main() {
         cout << "Linie sie nie przecinaja." << endl;
     }
 
+    cout << "Kat miedzy prostymi w radianach: " << t1.katy(t2, 0) << endl;
+    cout << "Kat miedzy prostymi w stopniach: " << t1.katy(t2, 1) << endl;
+
     /*Wektory3D v1 = Wektory3D(0, 3, 0);
     Wektory3D v2 = Wektory3D(5, 5, 0);
     Wektory3D a_b = Wektory3D();

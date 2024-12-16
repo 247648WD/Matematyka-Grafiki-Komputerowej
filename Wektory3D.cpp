@@ -140,7 +140,6 @@ bool Wektory3D::punktPrzeciecia(
 
     double det = A1 * B2 - A2 * B1;
     if (fabs(det) < 1e-6) {
-        cout << "Linie s¹ równoleg³e lub skoœne - brak przeciêcia." << endl;
         return false;
     }
 
@@ -150,7 +149,6 @@ bool Wektory3D::punktPrzeciecia(
     double z1_check = p1.get_z() + t * d1.get_z();
     double z2_check = p2.get_z() + u * d2.get_z();
     if (fabs(z1_check - z2_check) > 1e-6) {
-        cout << "Brak punktu przeciêcia - linie skoœne." << endl;
         return false;
     }
 
