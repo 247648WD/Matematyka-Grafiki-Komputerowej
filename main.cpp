@@ -43,8 +43,8 @@ int main() {
     }
 
     //zad 4
-    cout << "Kat miedzy prosta a plaszczyzna w radianach: " << d.katy(n, 0) << endl;
-    cout << "Kat miedzy prosta a plaszczyzna w stopniach: " << d.katy(n, 1) << endl;
+    cout << "Kat miedzy prosta a plaszczyzna w radianach: " << 1 - d.katy(n, 0) << endl;
+    cout << "Kat miedzy prosta a plaszczyzna w stopniach: " << 90 - d.katy(n, 1) << endl;
 
 
 
