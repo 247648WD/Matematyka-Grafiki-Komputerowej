@@ -32,17 +32,19 @@ int main() {
     Wektory3D v2 = Wektory3D(-2, 4, 0);
     Wektory3D t2 = Wektory3D(1, -5, 3);
     Wektory3D punkt;
-    if (punkt.punktPrzeciecia(v1, t1, v2, t2)) {
+    if (punkt.punktPrzecieciaProstych(v1, t1, v2, t2)) {
         cout << "Punkt przeciecia: ";
         punkt.print();
     }
     
 
     //zad 2
+    cout << endl;
     cout << "Kat miedzy prostymi w radianach: " << t1.katy(t2, 0) << endl;
     cout << "Kat miedzy prostymi w stopniach: " << t1.katy(t2, 1) << endl;
     
     //zad 3
+    cout << endl;
     Wektory3D v3 = Wektory3D(-2, 2, -1);
     Wektory3D d = Wektory3D(3, -1, 2);
     Wektory3D n = Wektory3D(2, 3, 3);
@@ -56,20 +58,20 @@ int main() {
     }
 
     //zad 4
+    cout << endl;
     cout << "Kat miedzy prosta a plaszczyzna w radianach: " << 1 - d.katy(n, 0) << endl;
     cout << "Kat miedzy prosta a plaszczyzna w stopniach: " << 90 - d.katy(n, 1) << endl;
 
     //zad 7
+    cout << endl;
     Wektory3D A = Wektory3D(5, 5, 4);
     Wektory3D A_p = Wektory3D(10, 10, 6);
-    Wektory3D A_temp = A_p - A;
 
     Wektory3D B = Wektory3D(5, 5, 5);
     Wektory3D B_p = Wektory3D(10, 10, 3);
-    Wektory3D B_temp = B_p - B;
 
     Wektory3D punkt3;
-    if (punkt3.punktPrzeciecia(A, A_temp, B, B_temp)) {
+    if (punkt3.punktPrzecieciaOdcinkow(A, A_p, B, B_p)) {
         cout << "Punkt przeciecia: ";
         punkt3.print();
     }

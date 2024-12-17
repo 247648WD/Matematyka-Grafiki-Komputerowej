@@ -162,7 +162,7 @@ void Wektory3D::check(Wektory3D v1) {
 //    return true;
 //}
 
-bool Wektory3D::punktPrzeciecia(
+bool Wektory3D::punktPrzecieciaProstych(
     Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
     Wektory3D p2, Wektory3D d2  // Punkt i wektor kierunkowy linii 2
 ) {
@@ -208,6 +208,36 @@ bool Wektory3D::punktPrzecieciaZPlaszczyzna(
     this->y = p.get_y() + t * d.get_y();
     this->z = p.get_z() + t * d.get_z();
 
+    return true;
+}
+
+bool Wektory3D::punktPrzecieciaOdcinkow(
+    Wektory3D p1, Wektory3D p1_prim,  // Punkty linii 1
+    Wektory3D p2, Wektory3D p2_prim   // Punkty linii 2
+) {
+    Wektory3D p1_temp = p1_prim - p1;
+    Wektory3D p2_temp = p2_prim - p2;
+
+    // Wektor prostopad³y do obu linii
+    Wektory3D prostopadly = p1_temp.iloczyn_wektorowy(p2_temp);
+
+    double check1 = prostopadly.iloczyn_skalarny(p1_temp);
+    double check2 = prostopadly.iloczyn_skalarny(p2_temp);
+    if (check1 != check2)
+    {
+        cout << "Linie sie nie przecinaja" << endl;
+        return false;
+    }
+
+    prostopadly = p1_temp.iloczyn_wektorowy(prostopadly);
+    double c = p1.iloczyn_skalarny(prostopadly);
+    double a = p2.iloczyn_skalarny(prostopadly);
+    double b = p2_temp.iloczyn_skalarny(prostopadly);
+    double wynik = (c - a) / b;
+
+    this->x = p1.get_x() + wynik * p1_temp.get_x();
+    this->y = p1.get_y() + wynik * p1_temp.get_y();
+    this->z = p1.get_z() + wynik * p1_temp.get_z();
     return true;
 }
 

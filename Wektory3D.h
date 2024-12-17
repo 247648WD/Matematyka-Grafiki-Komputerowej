@@ -40,7 +40,7 @@ public:
     Wektory3D iloczyn_wektorowy(Wektory3D a);
     double katy(Wektory3D v, bool rodzaj);
     void check(Wektory3D v1);
-    bool punktPrzeciecia(
+    bool punktPrzecieciaProstych(
         Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
         Wektory3D p2, Wektory3D d2   // Punkt i wektor kierunkowy linii 2
     );
@@ -50,6 +50,11 @@ public:
         Wektory3D d1,        // Wektor kierunkowy prostej
         Wektory3D p2, 
         double D  
+    );
+
+    bool punktPrzecieciaOdcinkow(
+        Wektory3D p1, Wektory3D p1_prim,  // Punkt i wektor kierunkowy linii 1
+        Wektory3D p2, Wektory3D p2_prim   // Punkt i wektor kierunkowy linii 2
     );
 };
 
