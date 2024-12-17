@@ -53,9 +53,6 @@ int main() {
         cout << "Punkt przeciecia: ";
         punkt2.print();
     }
-    else {
-        cout << "Linie sie nie przecinaja." << endl;
-    }
 
     //zad 4
     cout << endl;
@@ -75,7 +72,43 @@ int main() {
         cout << "Punkt przeciecia: ";
         punkt3.print();
     }
+
+    //zad 8
+    Wektory3D A8 = Wektory3D(3, -1, -2);
+    Wektory3D A8_p = Wektory3D(5, 3, -4);
+    Wektory3D center = Wektory3D(0, 0, 0);
+    double r = sqrt(26);
+
+    double a_zad8 = pow(A8_p.get_x() - A8.get_x(), 2) + pow(A8_p.get_y() - A8.get_y(), 2) + pow(A8_p.get_z() - A8.get_z(), 2);
+    double b_zad8 = 2 * ((A8_p.get_x() - A8.get_x()) * (A8.get_x() - center.get_x()) + (A8_p.get_y() - A8.get_y()) * (A8.get_y() - center.get_y()) + (A8_p.get_z() - A8.get_z()) * (A8.get_z() - center.get_z()));
+    double c_zad8 = pow(A8.get_x() - center.get_x(), 2) + pow(A8.get_y() - center.get_y(), 2) + pow(A8.get_z() - center.get_z(), 2) - (r * r);
     
+    double sum = sqrt(b_zad8 * b_zad8 - 4 * a_zad8 * c_zad8);
+    cout << sum;
+
+    if (sum < 0) {
+        cout << "Prosta nie przecina sfery" << endl;
+    }
+    else if (sum == 0) {
+        cout << "Prosta przecina sfere w jednym punkcie" << endl;
+
+        double wynik_zad8 = sum / (2 * a_zad8);
+        Wektory3D zad8 = Wektory3D(A8.get_x() + wynik_zad8 * (A8_p.get_x() - A8.get_x()), A8.get_y() + wynik_zad8 * (A8_p.get_y() - A8.get_y()), A8.get_z() + wynik_zad8 * (A8_p.get_z() - A8.get_z()));
+    }
+    else {
+        cout << "Prosta przecina sfere w dwoch punktach" << endl;
+        double wynik_zad8_1 = (-b_zad8 + sum) / (2 * a_zad8);
+        double wynik_zad8_2 = (-b_zad8 - sum) / (2 * a_zad8);
+        Wektory3D zad8_1 = Wektory3D(A8.get_x() + wynik_zad8_1 * (A8_p.get_x() - A8.get_x()), A8.get_y() + wynik_zad8_1 * (A8_p.get_y() - A8.get_y()), A8.get_z() + wynik_zad8_1 * (A8_p.get_z() - A8.get_z()));
+        zad8_1.print();
+        cout << endl;
+        Wektory3D zad8_2 = Wektory3D(A8.get_x() + wynik_zad8_2 * (A8_p.get_x() - A8.get_x()), A8.get_y() + wynik_zad8_2 * (A8_p.get_y() - A8.get_y()), A8.get_z() + wynik_zad8_2 * (A8_p.get_z() - A8.get_z()));
+        zad8_2.print();
+        cout << endl;
+    }
+
+
+
     /*Wektory3D test = A_temp.iloczyn_wektorowy(B_temp);
     test.print();
 

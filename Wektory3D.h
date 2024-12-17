@@ -53,8 +53,8 @@ public:
     );
 
     bool punktPrzecieciaOdcinkow(
-        Wektory3D p1, Wektory3D p1_prim,  // Punkt i wektor kierunkowy linii 1
-        Wektory3D p2, Wektory3D p2_prim   // Punkt i wektor kierunkowy linii 2
+        Wektory3D p1, Wektory3D p1_prim,  // Punkty linii 1
+        Wektory3D p2, Wektory3D p2_prim   // Punkty linii 2
     );
 };
 
