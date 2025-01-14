@@ -53,9 +53,6 @@ int main() {
         cout << "Punkt przeciecia: ";
         punkt2.print();
     }
-    else {
-        cout << "Linie sie nie przecinaja." << endl;
-    }
 
     //zad 4
     cout << endl;
@@ -96,8 +93,17 @@ int main() {
         punkt3.print();
     }
 
+    //zad 8
+    cout << endl;
+    Wektory3D A8 = Wektory3D(3, -1, -2);
+    Wektory3D A8_p = Wektory3D(5, 3, -4);
+    Wektory3D center = Wektory3D(0, 0, 0);
+    double r = sqrt(26);
+    Wektory3D wynik_zad8;
 
-    
+    wynik_zad8.punktPrzecieciaSfera(A8, A8_p, center, r);
+
+
     /*Wektory3D test = A_temp.iloczyn_wektorowy(B_temp);
     test.print();
 

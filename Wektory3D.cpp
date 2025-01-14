@@ -119,7 +119,6 @@ double Wektory3D::katy(Wektory3D v, bool rodzaj) {
     else {
         return kat * 180 / M_PI;
     }
-    
 }
 
 void Wektory3D::check(Wektory3D v1) {
@@ -129,45 +128,10 @@ void Wektory3D::check(Wektory3D v1) {
         cout << "Wektory3D sa rozne" << endl;
 }
 
-//bool Wektory3D::punktPrzeciecia(
-//    Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
-//    Wektory3D p2, Wektory3D d2  // Punkt i wektor kierunkowy linii 2
-//) {
-//
-//    Wektory3D deltaP = p2 - p1;
-//    
-//    double A1 = d1.get_x(), B1 = -d2.get_x(), C1 = deltaP.get_x();
-//    double A2 = d1.get_y(), B2 = -d2.get_y(), C2 = deltaP.get_y();
-//    double A3 = d1.get_z(), B3 = -d2.get_z(), C3 = deltaP.get_z();
-//
-//    double det = A1 * B2 - A2 * B1;
-//    if (fabs(det) < 1e-6) {
-//        if (fabs(A3 * B2 - A2 * B3) > 1e-6)
-//        {
-//            return false;
-//        }
-//    }
-//
-//    double t = (C1 * B2 - C2 * B1) / det;
-//    double u = (A1 * C2 - A2 * C1) / det;
-//
-//    double z1_check = p1.get_z() + t * d1.get_z();
-//    double z2_check = p2.get_z() + u * d2.get_z();
-//    if (fabs(z1_check - z2_check) > 1e-6) {
-//        return false;
-//    }
-//
-//    this->x = p1.get_x() + t * d1.get_x();
-//    this->y = p1.get_y() + t * d1.get_y();
-//    this->z = p1.get_z() + t * d1.get_z();
-//    return true;
-//}
-
 bool Wektory3D::punktPrzecieciaProstych(
     Wektory3D p1, Wektory3D d1,  // Punkt i wektor kierunkowy linii 1
     Wektory3D p2, Wektory3D d2  // Punkt i wektor kierunkowy linii 2
 ) {
-
     // Wektor prostopad³y do obu linii
     Wektory3D prostopadly = d1.iloczyn_wektorowy(d2);
     
@@ -263,40 +227,94 @@ bool Wektory3D::przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, doub
         temp.set_gut_number(i, 0, ((temp.get_number(i, 0) / temp_a) * sign));
     }
 
-    for (int i = 0; i < 4; i++) {
-        temp.set_gut_number(i, 1, ((temp.get_number(i, 1) - temp.get_number(i, 0))));
+void Wektory3D::punktPrzecieciaSfera(
+    Wektory3D A8, Wektory3D A8_p, // Punkty prostej
+    Wektory3D center, double r // Œrodek i promieñ sfery
+) {
+    Wektory3D A8_temp = A8_p - A8;
+
+    double a_zad8 = pow(A8_temp.get_x(), 2) + pow(A8_temp.get_y(), 2) + pow(A8_temp.get_z(), 2);
+    double b_zad8 = 2 * (A8_temp.get_x() * (A8.get_x() - center.get_x()) + A8_temp.get_y() * (A8.get_y() - center.get_y()) + A8_temp.get_z() * (A8.get_z() - center.get_z()));
+    double c_zad8 = pow(A8.get_x() - center.get_x(), 2) + pow(A8.get_y() - center.get_y(), 2) + pow(A8.get_z() - center.get_z(), 2) - (r * r);
+
+    double sum = sqrt(b_zad8 * b_zad8 - 4 * a_zad8 * c_zad8);
+
+    if (sum < 0) {
+        cout << "Prosta nie przecina sfery" << endl;
+    }
+    else if (sum == 0) {
+        cout << "Prosta przecina sfere w jednym punkcie" << endl;
+
+        double wynik_zad8 = sum / (2 * a_zad8);
+        Wektory3D zad8 = Wektory3D(A8.get_x() + wynik_zad8 * (A8_p.get_x() - A8.get_x()), A8.get_y() + wynik_zad8 * (A8_p.get_y() - A8.get_y()), A8.get_z() + wynik_zad8 * (A8_p.get_z() - A8.get_z()));
+    }
+    else {
+        cout << "Prosta przecina sfere w dwoch punktach" << endl;
+        double wynik_zad8_1 = (-b_zad8 + sum) / (2 * a_zad8);
+        double wynik_zad8_2 = (-b_zad8 - sum) / (2 * a_zad8);
+        Wektory3D zad8_1 = Wektory3D(A8.get_x() + wynik_zad8_1 * (A8_p.get_x() - A8.get_x()), A8.get_y() + wynik_zad8_1 * (A8_p.get_y() - A8.get_y()), A8.get_z() + wynik_zad8_1 * (A8_p.get_z() - A8.get_z()));
+        zad8_1.print();
+        cout << endl;
+        Wektory3D zad8_2 = Wektory3D(A8.get_x() + wynik_zad8_2 * (A8_p.get_x() - A8.get_x()), A8.get_y() + wynik_zad8_2 * (A8_p.get_y() - A8.get_y()), A8.get_z() + wynik_zad8_2 * (A8_p.get_z() - A8.get_z()));
+        zad8_2.print();
+        cout << endl;
+    }
+}
+
+bool Wektory3D::prostaPrzecieciaPlaszczyzn(
+    Wektory3D n1, double D1, // Wektor normalny i sta³a dla pierwszej p³aszczyzny
+    Wektory3D n2, double D2, // Wektor normalny i sta³a dla drugiej p³aszczyzny
+    Wektory3D punkt,        // Punkt na przeciêciu (wyjœcie)
+    Wektory3D kierunek      // Wektor kierunkowy prostej (wyjœcie)
+) {
+    kierunek = n1.iloczyn_wektorowy(n2);
+
+    // Jeœli d³ugoœæ wektora kierunkowego jest 0, p³aszczyzny s¹ równoleg³e
+    if (kierunek.length() < 1e-6) {
+        cout << "P³aszczyzny s¹ równoleg³e lub identyczne" << endl;
+        return false;
     }
 
-    double z;
-    Wektory3D y;
-    Wektory3D x;
+    // Rozwi¹zanie uk³adu równañ dla dowolnego punktu na przeciêciu:
+    // n1.x * x + n1.y * y + n1.z * z = -D1
+    // n2.x * x + n2.y * y + n2.z * z = -D2
+    //
+    // Zak³adamy z = 0 i rozwi¹zujemy uk³ad dla x i y:
+    double a1 = n1.get_x(), b1 = n1.get_y(), c1 = n1.get_z(), d1 = -D1;
+    double a2 = n2.get_x(), b2 = n2.get_y(), c2 = n2.get_z(), d2 = -D2;
 
-    y.set_x(temp.get_number(1, 1));
-    y.set_y(temp.get_number(2, 1));
-    y.set_z(temp.get_number(3, 1));
+    // Wyznacznik uk³adu dla x i y
+    double det = a1 * b2 - a2 * b1;
 
-    x.set_x(temp.get_number(1, 0));
-    x.set_y(temp.get_number(2, 0));
-    x.set_z(temp.get_number(3, 0));
+    if (fabs(det) > 1e-6) {
+        // Punkt przeciêcia przy za³o¿eniu z = 0
+        double x = (d1 * b2 - d2 * b1) / det;
+        double y = (a1 * d2 - a2 * d1) / det;
+        punkt = Wektory3D(x, y, 0);
+    }
+    else {
+        // Jeœli det == 0, zak³adamy y = 0 i rozwi¹zujemy dla x i z
+        det = a1 * c2 - a2 * c1;
+        if (fabs(det) > 1e-6) {
+            double x = (d1 * c2 - d2 * c1) / det;
+            double z = (a1 * d2 - a2 * d1) / det;
+            punkt = Wektory3D(x, 0, z);
+        }
+        else {
+            // Jeœli det == 0, zak³adamy x = 0 i rozwi¹zujemy dla y i z
+            det = b1 * c2 - b2 * c1;
+            if (fabs(det) > 1e-6) {
+                double y = (d1 * c2 - d2 * c1) / det;
+                double z = (b1 * d2 - b2 * d1) / det;
+                punkt = Wektory3D(0, y, z);
+            }
+            else {
+                cout << "Nie mo¿na znaleŸæ punktu przeciêcia" << endl;
+                return false;
+            }
+        }
+    }
 
-    cout << "Równanie: x = " << (x.get_z() - (x.get_x() * (y.get_z() - (y.get_y() + y.get_x() * x.get_y()) / y.get_x()))) / y.get_x() << " y = " << (y.get_z() - y.get_y()) / y.get_x() << " z = " << "parametr t";*/
-
-    //Wektory3D p1 = m1.normalizacja();
-    //Wektory3D p2 = m2.normalizacja();
-    Wektory3D temp, temp1, temp2;
-    Wektory3D res;
-    double l;
-    temp = m1.iloczyn_wektorowy(m2);
-    temp1 = temp.iloczyn_wektorowy(m2);
-    temp2 = m1.iloczyn_wektorowy(temp);
-    l = temp.length();
-    temp1 = temp1 * d1;
-    temp2 = temp2 * d2;
-    res = temp1 + temp2;
-    res = res / l;
-    cout << "Wektor: ";
-    temp.print();
-    cout << "Punkt: ";
-    res.print();
     return true;
 }
+

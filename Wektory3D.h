@@ -53,8 +53,20 @@ public:
     );
 
     bool punktPrzecieciaOdcinkow(
-        Wektory3D p1, Wektory3D p1_prim,  // Punkt i wektor kierunkowy linii 1
-        Wektory3D p2, Wektory3D p2_prim   // Punkt i wektor kierunkowy linii 2
+        Wektory3D p1, Wektory3D p1_prim,  // Punkty linii 1
+        Wektory3D p2, Wektory3D p2_prim   // Punkty linii 2
+    );
+
+    void punktPrzecieciaSfera(
+        Wektory3D p1, Wektory3D p2, // Punkty prostej
+        Wektory3D center, double r // Œrodek i promieñ sfery
+    );
+
+    bool prostaPrzecieciaPlaszczyzn(
+        Wektory3D n1, double D1, // Wektor normalny i sta³a dla pierwszej p³aszczyzny
+        Wektory3D n2, double D2, // Wektor normalny i sta³a dla drugiej p³aszczyzny
+        Wektory3D punkt,        // Punkt na przeciêciu (wyjœcie)
+        Wektory3D kierunek      // Wektor kierunkowy prostej (wyjœcie)
     );
     bool przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2);
 };
