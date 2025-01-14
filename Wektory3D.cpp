@@ -207,38 +207,6 @@ bool Wektory3D::punktPrzecieciaOdcinkow(
 }
 
 bool Wektory3D::przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2) {
-    /*Macierz temp = Macierz(4, 2);
-    Macierz res = Macierz(4, 1);
-    temp.set_gut_number(0, 0, m1.get_x());
-    temp.set_gut_number(1, 0, m1.get_y());
-    temp.set_gut_number(2, 0, m1.get_z());
-    temp.set_gut_number(3, 0, d1);
-    temp.set_gut_number(0, 1, m2.get_x());
-    temp.set_gut_number(1, 1, m2.get_y());
-    temp.set_gut_number(2, 1, m2.get_z());
-    temp.set_gut_number(3, 1, d2);
-    double temp_a = temp.get_number(0,0);
-    double temp_b = temp.get_number(0, 1);
-    double sign = 0;
-    temp_a * temp_b < 0 ? sign = -1 : sign = 1;
-    for (int i = 0; i < 4; i++) {
-        temp.set_gut_number(i, 0, ((temp.get_number(i, 0) / temp_a) * sign));
-    }
-    for (int i = 0; i < 4; i++) {
-        temp.set_gut_number(i, 1, ((temp.get_number(i, 1) - temp.get_number(i, 0))));
-    }
-    double z;
-    Wektory3D y;
-    Wektory3D x;
-    y.set_x(temp.get_number(1, 1));
-    y.set_y(temp.get_number(2, 1));
-    y.set_z(temp.get_number(3, 1));
-    x.set_x(temp.get_number(1, 0));
-    x.set_y(temp.get_number(2, 0));
-    x.set_z(temp.get_number(3, 0));
-    cout << "Równanie: x = " << (x.get_z() - (x.get_x() * (y.get_z() - (y.get_y() + y.get_x() * x.get_y()) / y.get_x()))) / y.get_x() << " y = " << (y.get_z() - y.get_y()) / y.get_x() << " z = " << "parametr t";*/
-    //Wektory3D p1 = m1.normalizacja();
-    //Wektory3D p2 = m2.normalizacja();
     Wektory3D temp, temp1, temp2;
     Wektory3D res;
     double l;

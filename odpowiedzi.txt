@@ -1,2 +1,22 @@
+Punkt przeciecia: -2, 4, 0
 
+Kat miedzy prostymi w radianach: 1.19025
+Kat miedzy prostymi w stopniach: 68.1963
+
+Punkt przeciecia: 1, 1, 1
+
+Kat miedzy prosta a plaszczyzna w radianach: -0.0323269
+Kat miedzy prosta a plaszczyzna w stopniach: 30.852
+
+Wektor: -4, 2, 10
+Punkt: 5.11208, -62.8055, 14.6059
+
+Kat miedzy plaszczyznami: 61.2895
+
+Punkt przeciecia: 6.25, 6.25, 4.5
+
+Prosta przecina sfere w dwoch punktach
+4, 1, -3
+
+1, -5, -2.22045e-16
 
