@@ -62,6 +62,26 @@ int main() {
     cout << "Kat miedzy prosta a plaszczyzna w radianach: " << 1 - d.katy(n, 0) << endl;
     cout << "Kat miedzy prosta a plaszczyzna w stopniach: " << 90 - d.katy(n, 1) << endl;
 
+    //zad 5
+    cout << endl;
+    Wektory3D p1 = Wektory3D(2, -1, 1);
+    Wektory3D p2 = Wektory3D(4, 3, 1);
+    double d1 = -8;
+    double d2 = 14;
+    Wektory3D zad5;
+    zad5.przecieciePlaszczyzn(p1, p2, d1, d2);
+    cout << endl;
+    //punkt4.print();
+
+
+    //zad 6
+    Wektory3D tempa, tempb;
+    double kat6;
+    tempa = p1.normalizacja();
+    tempb = p2.normalizacja();
+    kat6 = tempa.katy(tempb, true);
+    cout << "Kat miedzy plaszczyznami: " << kat6 << endl;
+
     //zad 7
     cout << endl;
     Wektory3D A = Wektory3D(5, 5, 4);
@@ -75,6 +95,8 @@ int main() {
         cout << "Punkt przeciecia: ";
         punkt3.print();
     }
+
+
     
     /*Wektory3D test = A_temp.iloczyn_wektorowy(B_temp);
     test.print();

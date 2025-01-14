@@ -56,6 +56,8 @@ public:
         Wektory3D p1, Wektory3D p1_prim,  // Punkt i wektor kierunkowy linii 1
         Wektory3D p2, Wektory3D p2_prim   // Punkt i wektor kierunkowy linii 2
     );
+    bool przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2);
 };
+
 
 #endif // !WEKTORY3D_H
