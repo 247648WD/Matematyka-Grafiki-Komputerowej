@@ -206,26 +206,49 @@ bool Wektory3D::punktPrzecieciaOdcinkow(
     return true;
 }
 
-bool Wektory3D::przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2) {
-    /*Macierz temp = Macierz(4, 2);
-    Macierz res = Macierz(4, 1);
-    temp.set_gut_number(0, 0, m1.get_x());
-    temp.set_gut_number(1, 0, m1.get_y());
-    temp.set_gut_number(2, 0, m1.get_z());
-    temp.set_gut_number(3, 0, d1);
-    temp.set_gut_number(0, 1, m2.get_x());
-    temp.set_gut_number(1, 1, m2.get_y());
-    temp.set_gut_number(2, 1, m2.get_z());
-    temp.set_gut_number(3, 1, d2);
-    double temp_a = temp.get_number(0,0);
-    double temp_b = temp.get_number(0, 1);
-    double sign = 0;
+void Wektory3D::przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2, bool z) 
+{
+    Wektory3D wynik;
+    float r;
+    
+    Wektory3D m1_temp = m1;
+    Wektory3D m2_temp = m2;
 
-    temp_a * temp_b < 0 ? sign = -1 : sign = 1;
+    if (m1_temp.get_z() != 0)
+        m1_temp.set_z(-d1 / m1_temp.get_z() );
+    else if(m1_temp.get_y() != 0)
+        m1_temp.set_y(-d1 / m1_temp.get_y());
 
-    for (int i = 0; i < 4; i++) {
-        temp.set_gut_number(i, 0, ((temp.get_number(i, 0) / temp_a) * sign));
-    }
+    if (m2_temp.get_z() != 0)
+        m2_temp.set_z(-d1 / m2_temp.get_z());
+    else if (m1_temp.get_y() != 0)
+        m2_temp.set_y(-d1 / m2_temp.get_y());
+
+    wynik = m1_temp.iloczyn_wektorowy(m2_temp);
+    r = wynik.length();
+    cout << r;
+
+        /*Macierz temp = Macierz(4, 2);
+        Macierz res = Macierz(4, 1);
+        temp.set_gut_number(0, 0, m1.get_x());
+        temp.set_gut_number(1, 0, m1.get_y());
+        temp.set_gut_number(2, 0, m1.get_z());
+        temp.set_gut_number(3, 0, d1);
+        temp.set_gut_number(0, 1, m2.get_x());
+        temp.set_gut_number(1, 1, m2.get_y());
+        temp.set_gut_number(2, 1, m2.get_z());
+        temp.set_gut_number(3, 1, d2);
+        double temp_a = temp.get_number(0,0);
+        double temp_b = temp.get_number(0, 1);
+        double sign = 0;
+
+        temp_a * temp_b < 0 ? sign = -1 : sign = 1;
+
+        for (int i = 0; i < 4; i++) {
+            temp.set_gut_number(i, 0, ((temp.get_number(i, 0) / temp_a) * sign));
+        }*/
+}
+ 
 
 void Wektory3D::punktPrzecieciaSfera(
     Wektory3D A8, Wektory3D A8_p, // Punkty prostej

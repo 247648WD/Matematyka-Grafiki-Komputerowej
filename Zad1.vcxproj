@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Kwateriony.cpp" />
     <ClCompile Include="Macierz.cpp" />
+    <ClCompile Include="Rtx.cpp" />
     <ClCompile Include="Wektory2D.cpp" />
     <ClCompile Include="Wektory3D.cpp" />
     <ClCompile Include="main.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="Kwateriony.h" />
     <ClInclude Include="Macierz.h" />
+    <ClInclude Include="Rtx.h" />
     <ClInclude Include="Wektory2D.h" />
     <ClInclude Include="Wektory3D.h" />
   </ItemGroup>

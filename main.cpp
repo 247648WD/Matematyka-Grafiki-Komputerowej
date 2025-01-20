@@ -26,6 +26,7 @@ int main() {
     //}
 
     //zad 1
+    cout << "------ Zad 1 ------" << endl;
     Wektory3D v1 = Wektory3D(-2, 4, 0);
     Wektory3D t1 = Wektory3D(3, 1, 5);
 
@@ -39,12 +40,12 @@ int main() {
     
 
     //zad 2
-    cout << endl;
+    cout << endl << "------ Zad 2 ------" << endl;
     cout << "Kat miedzy prostymi w radianach: " << t1.katy(t2, 0) << endl;
     cout << "Kat miedzy prostymi w stopniach: " << t1.katy(t2, 1) << endl;
     
     //zad 3
-    cout << endl;
+    cout << endl << "------ Zad 3 ------" << endl;
     Wektory3D v3 = Wektory3D(-2, 2, -1);
     Wektory3D d = Wektory3D(3, -1, 2);
     Wektory3D n = Wektory3D(2, 3, 3);
@@ -55,32 +56,34 @@ int main() {
     }
 
     //zad 4
-    cout << endl;
+    cout << endl << "------ Zad 4 ------" << endl;
     cout << "Kat miedzy prosta a plaszczyzna w radianach: " << 1 - d.katy(n, 0) << endl;
     cout << "Kat miedzy prosta a plaszczyzna w stopniach: " << 90 - d.katy(n, 1) << endl;
 
+    
     //zad 5
-    cout << endl;
+    cout << endl << "------ Zad 5 ------" << endl;
     Wektory3D p1 = Wektory3D(2, -1, 1);
     Wektory3D p2 = Wektory3D(4, 3, 1);
     double d1 = -8;
     double d2 = 14;
     Wektory3D zad5;
-    zad5.przecieciePlaszczyzn(p1, p2, d1, d2);
+    zad5.przecieciePlaszczyzn(p1, p2, d1, d2, 0);
     cout << endl;
-    //punkt4.print();
-
-
+    
+    
     //zad 6
+    cout << endl << "------ Zad 6 ------" << endl;
     Wektory3D tempa, tempb;
     double kat6;
     tempa = p1.normalizacja();
     tempb = p2.normalizacja();
     kat6 = tempa.katy(tempb, true);
     cout << "Kat miedzy plaszczyznami: " << kat6 << endl;
+    
 
     //zad 7
-    cout << endl;
+    cout << endl << "------ Zad 7 ------" << endl;
     Wektory3D A = Wektory3D(5, 5, 4);
     Wektory3D A_p = Wektory3D(10, 10, 6);
 
@@ -94,7 +97,7 @@ int main() {
     }
 
     //zad 8
-    cout << endl;
+    cout << endl << "------ Zad 8 ------" << endl;
     Wektory3D A8 = Wektory3D(3, -1, -2);
     Wektory3D A8_p = Wektory3D(5, 3, -4);
     Wektory3D center = Wektory3D(0, 0, 0);

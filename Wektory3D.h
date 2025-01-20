@@ -68,7 +68,7 @@ public:
         Wektory3D punkt,        // Punkt na przeciêciu (wyjœcie)
         Wektory3D kierunek      // Wektor kierunkowy prostej (wyjœcie)
     );
-    bool przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2);
+    void przecieciePlaszczyzn(Wektory3D m1, Wektory3D m2, double d1, double d2, bool z);
 };
 
 
