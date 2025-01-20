@@ -4,12 +4,93 @@
 #include "Wektory2D.h"
 #include "Macierz.h"
 #include "Kwateriony.h"
+#include "Rtx.h"
+
 
 #define M_PI 3.14159265358979323846 
 
 using namespace std;
 
 int main() {
+    Rtx r1;
+    Wektory3D cameraPos = Wektory3D(3, 0,0);
+    double pitch = 0;
+    double yaw = 0;
+    double radius = 3;
+
+    /*Wektory3D test1(0, 0, 1);
+    Wektory3D test2(1, 0, 0);
+    Wektory3D test3 = test1.iloczyn_wektorowy(test2);
+    test3.print();*/
+
+    char cam;
+
+    //do
+    //{
+    //    cam = _getch();
+    //    //std::cout << "znak: '" << znak << "' kod: " << static_cast <int>(znak) << std::endl;
+    //    while (_kbhit())
+    //    {
+    //        r1.RayCast(cameraPos, cameraDir);
+    //        r1.Draw();
+    //        cam = _getch();
+    //        switch (cam) {
+    //        case 72:
+    //            cameraPos.set_x(cameraPos.get_x() + 1);
+    //            break;
+    //        case 80:
+    //            cameraPos.set_x(cameraPos.get_x() - 1);
+    //            break;
+    //        case 'd':
+    //            cameraPos.set_x(cameraPos.get_y() + 1);
+    //            break;
+    //        case 'a':
+    //            cameraPos.set_x(cameraPos.get_y() - 1);
+    //            break;
+    //        case 'e':
+    //            cameraPos.set_x(cameraPos.get_z() + 1);
+    //            break;
+    //        case 'q':
+    //            cameraPos.set_x(cameraPos.get_z() - 1);
+    //            break;
+    //        default:
+    //            break;
+    //        }
+    //    }
+    //    std::cout << std::endl;
+    //} while (true); //ESC
+
+    while (true) {
+        r1.CameraUpdate(pitch, yaw, radius, cameraPos);
+        cin >> cam;
+        switch (cam) {
+        case 'w':
+            yaw += 5.0f;
+            break;
+        case 's':
+            yaw -= 5.0f;
+            break;
+        case 'd':
+            pitch += 5.0f;
+            break;
+        case 'a':
+            pitch -= 5.0f;
+            break;
+        case 'e':
+            radius += 1.0f;
+            break;
+        case 'q':
+            radius -= 1.0f;
+            break;
+        default:
+            break;
+        }
+    }
+    
+    
+    
+    
+    
     ////zad 1
     //Wektory3D v1 = Wektory3D(-2, 4, 0);
     //Wektory3D t1 = Wektory3D(3, 1, 5);
@@ -25,7 +106,7 @@ int main() {
     //    cout << "Linie sie nie przecinaja." << endl;
     //}
 
-    //zad 1
+    /*//zad 1
     cout << "------ Zad 1 ------" << endl;
     Wektory3D v1 = Wektory3D(-2, 4, 0);
     Wektory3D t1 = Wektory3D(3, 1, 5);
@@ -104,7 +185,7 @@ int main() {
     double r = sqrt(26);
     Wektory3D wynik_zad8;
 
-    wynik_zad8.punktPrzecieciaSfera(A8, A8_p, center, r);
+    wynik_zad8.punktPrzecieciaSfera(A8, A8_p, center, r);*/
 
 
     /*Wektory3D test = A_temp.iloczyn_wektorowy(B_temp);

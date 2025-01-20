@@ -33,15 +33,17 @@ struct Ray {
     Wektory3D direction;
     Wektory3D temp;
 
-    Ray(const Wektory3D& o, const Wektory3D& d) {
+    Ray(Wektory3D o, Wektory3D d) {
         origin = o; 
         temp = d;
         direction = temp.normalizacja(); 
     }
+
+
 };
 
 
-bool IntersectAABB(const Ray& ray)
+bool IntersectAABB(Ray& ray)
 {
     Wektory3D boxMin(-1, -1, -1);
     Wektory3D boxMax(1, 1, 1);
@@ -63,20 +65,23 @@ bool IntersectAABB(const Ray& ray)
     return tMax >= std::max(tMin, 0.0);
 }
 
-void Rtx::RayCast(const Wektory3D& cameraPosition, const Wektory3D& cameraDirection)
+void Rtx::RayCast(Wektory3D cameraPosition, Wektory3D cameraDirection)
 {
     float pixelSize = 4.0f / 60.0f;
     float screenDistance = 1.0f;
 
     Wektory3D screenCenter = cameraPosition;
     Wektory3D temp = cameraDirection;
-    screenCenter = screenCenter + (temp.normalizacja() * screenDistance);
+    temp = temp.normalizacja();
+    screenCenter = cameraPosition + (temp * screenDistance);
     Wektory3D worldUp(0, 0, 1);
 
     // Kierunki lewo i dó³ dla ekranu
     Wektory3D screenLeft = cameraDirection;
-    screenLeft.iloczyn_wektorowy(worldUp).normalizacja();
-    Wektory3D screenDown = screenLeft.iloczyn_wektorowy(cameraDirection).normalizacja();
+    screenLeft = screenLeft.iloczyn_wektorowy(worldUp);
+    screenLeft = screenLeft.normalizacja();
+    Wektory3D screenDown = screenLeft.iloczyn_wektorowy(cameraDirection);
+    screenDown = screenDown.normalizacja();
 
     for (int i = 0; i < 60; i++)
     {
@@ -93,4 +98,24 @@ void Rtx::RayCast(const Wektory3D& cameraPosition, const Wektory3D& cameraDirect
             screen[i][k] = IntersectAABB(ray);
         }
     }
+    system("cls");
+    Draw();
+}
+
+void Rtx::CameraUpdate(float pitch, float yaw, float radius, Wektory3D cameraPos) {
+    float pitchRadians = pitch * M_PI / 180.0f;
+    float yawRadians = yaw * M_PI / 180.0f;
+
+    cameraPos.set_x(radius * std::cos(pitchRadians) * std::cos(yawRadians));
+    cameraPos.set_y(radius * std::sin(pitchRadians) * std::cos(yawRadians));
+    cameraPos.set_z(radius * std::sin(yawRadians));
+
+    double x = cameraPos.get_x() * -1;
+    double y = cameraPos.get_y() * -1;
+    double z = cameraPos.get_z() * -1;
+
+    Wektory3D cameraDir(x,y,z);
+    cameraDir = cameraDir.normalizacja();
+
+    RayCast(cameraPos, cameraDir);
 }
